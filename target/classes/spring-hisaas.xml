@@ -9,7 +9,7 @@
 	<bean id="propertyConfigurer" class="com.kool.core.util.PropertyUtils">
 		<property name="locations">
 			<list>
-				<value>classpath:evowkf.properties</value> <!-- 指定外部文件的编码 -->
+				<value>classpath:hisaas.properties</value> <!-- 指定外部文件的编码 -->
 			</list>
 		</property>
 	</bean>
