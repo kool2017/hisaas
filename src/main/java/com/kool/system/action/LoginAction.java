@@ -11,8 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,14 +28,13 @@ import com.kool.system.service.UserService;
 
 /**
  * @DESCRIBE 登录
- *           ！！注意！！未继承IBaseAction！！无相关切面功能
  * 
  * @AUTHOR LUYU
  * @DATE 2018年1月1日 下午12:29:43
  *
  */
 @Controller
-public class LoginAction {
+public class LoginAction{
 	@Autowired
 	private UserService service;
 
@@ -49,10 +46,9 @@ public class LoginAction {
 	 * @return
 	 * @throws AppException
 	 */
-	@Transactional(propagation = Propagation.REQUIRED)
 	@ResponseBody
 	@RequestMapping(value = "/user/login.json", method = RequestMethod.POST)
-	public JSONObject doAction(@RequestBody String sInput, HttpServletRequest request, HttpServletResponse response) throws BusException, AppException {
+	public JSONObject doAction(@RequestBody String sInput,HttpServletRequest request,HttpServletResponse response) throws BusException, AppException {
 		JSONObject pkgIn = JSONObject.parseObject(sInput);
 		JSONArray sectionIn = pkgIn.getJSONArray("SYLOGINFX");
 		JSONObject propIn = sectionIn.getJSONObject(0);
@@ -65,12 +61,12 @@ public class LoginAction {
 		SyUserInfoBean userInf = service.login(logInf);
 		
 		LoginInfo loginInfo = new LoginInfo();
-		loginInfo.setSuiId(userInf.getSuiId());
+		loginInfo.setSuiId(userInf.getSuiUserCid());
 		loginInfo.setSuiLoginName(userInf.getSuiLoginName());
 		loginInfo.setSuiFace(userInf.getSuiFace());
 		loginInfo.setSuiMail(userInf.getSuiMail());
 		loginInfo.setSuiPhone(userInf.getSuiPhone());
-		loginInfo.setSuiStatus(userInf.getSuiStatus());
+		loginInfo.setSuiStatus(userInf.getSuiState());
 		request.getSession().setAttribute(CoreConstants.SESSION_LOGIN_INFO, loginInfo);
 		
 		Cookie cookie = new Cookie("LOGIN_NAME", loginInfo.getSuiLoginName());

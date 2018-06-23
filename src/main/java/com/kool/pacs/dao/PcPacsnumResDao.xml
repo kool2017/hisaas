@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.pacs.dao.PcPacsnumResDao">
+	<resultMap id="BaseResultMap" type="com.kool.pacs.bean.PcPacsnumResBean">
+		<id column="NUMBER_ID" property="numberId" />
+		<result column="APPT_ID" property="apptId" />
+		<result column="DEVICE_ID" property="deviceId" />
+		<result column="SCHEDU_ID" property="scheduId" />
+		<result column="SCHEDU_DT" property="scheduDt" />
+		<result column="SCHEDU_AMPM" property="scheduAmpm" />
+		<result column="SCHEDU_SECTION" property="scheduSection" />
+		<result column="SCHEDU_POINT" property="scheduPoint" />
+		<result column="NUMBER_TYPE" property="numberType" />
+		<result column="LOCKTYPE" property="locktype" />
+		<result column="LOCKSOURCE" property="locksource" />
+		<result column="UNLOCKDEPTID" property="unlockdeptid" />
+		<result column="LOCK_ID" property="lockId" />
+		<result column="ADD_ID" property="addId" />
+		<result column="CREATEDT" property="createdt" />
+		<result column="ORDERCODE" property="ordercode" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			NUMBER_ID, 			
+			APPT_ID, 			
+			DEVICE_ID, 			
+			SCHEDU_ID, 			
+			SCHEDU_DT, 			
+			SCHEDU_AMPM, 			
+			SCHEDU_SECTION, 			
+			SCHEDU_POINT, 			
+			NUMBER_TYPE, 			
+			LOCKTYPE, 			
+			LOCKSOURCE, 			
+			UNLOCKDEPTID, 			
+			LOCK_ID, 			
+			ADD_ID, 			
+			CREATEDT, 			
+			ORDERCODE			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		NUMBER_ID
+	</sql>
+</mapper>  

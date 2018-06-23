@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.pacs.dao.PcLockNumDao">
+	<resultMap id="BaseResultMap" type="com.kool.pacs.bean.PcLockNumBean">
+		<id column="LOCK_ID" property="lockId" />
+		<result column="DEVICE_ID" property="deviceId" />
+		<result column="LOCK_DT" property="lockDt" />
+		<result column="LOCK_AMPM" property="lockAmpm" />
+		<result column="LOCK_SECTION" property="lockSection" />
+		<result column="LOCK_POINT" property="lockPoint" />
+		<result column="LOCK_TYPE" property="lockType" />
+		<result column="UNLOCKDEPTID" property="unlockdeptid" />
+		<result column="LOCK_PERSONID" property="lockPersonid" />
+		<result column="ORDERCODE" property="ordercode" />
+		<result column="CREATEDT" property="createdt" />
+		<result column="LOCK_REASON" property="lockReason" />
+		<result column="STATUS" property="status" />
+		<result column="REMARK" property="remark" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			LOCK_ID, 			
+			DEVICE_ID, 			
+			LOCK_DT, 			
+			LOCK_AMPM, 			
+			LOCK_SECTION, 			
+			LOCK_POINT, 			
+			LOCK_TYPE, 			
+			UNLOCKDEPTID, 			
+			LOCK_PERSONID, 			
+			ORDERCODE, 			
+			CREATEDT, 			
+			LOCK_REASON, 			
+			STATUS, 			
+			REMARK			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		LOCK_ID
+	</sql>
+</mapper>  

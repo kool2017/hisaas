@@ -43,4 +43,14 @@ public class AppException extends Exception{
 		}
 		return msg;
 	}
+
+	/**
+	 * @DESCRIBE 
+	 * @DATE 2018年6月20日 下午2:28:00
+	 *
+	 * @return
+	 */
+	public String getErrorCode() {
+		return this.errCod;
+	}
 }

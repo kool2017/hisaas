@@ -18,6 +18,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.kool.core.base.BaseBean;
 import com.kool.core.base.IBaseAction;
+import com.kool.core.exception.AppException;
 import com.kool.core.exception.BusException;
 import com.kool.system.bean.SyUserInfoBean;
 import com.kool.system.bean.io.SYPAGEINFOYBean;
@@ -35,7 +36,6 @@ public class UserQueryPageAction implements IBaseAction {
 	@Autowired
 	private UserService service;
 
-	@Transactional(propagation = Propagation.REQUIRED)
 	@ResponseBody
 	@RequestMapping(value = "/usermng/userQueryPage.json", method = RequestMethod.POST)
 	public JSONObject doAction(@RequestBody String sInput) throws BusException {

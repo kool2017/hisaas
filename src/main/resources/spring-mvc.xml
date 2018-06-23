@@ -95,15 +95,17 @@
 		</property>
 	</bean>
 
-	<bean id="myLogger" class="com.kool.core.log.MyLogger">
-
+	<!-- <bean id="myLogger" class="com.kool.core.log.MyLogger">
+	</bean> -->
+	<bean id="reqAspect" class="com.kool.core.aspect.ReqAspect">
 	</bean>
 	<aop:config>
-		<aop:aspect id="printTime" ref="myLogger">
-			<aop:pointcut id="addAllMethod"
+		<aop:aspect id="actionAspect" ref="reqAspect">
+			<aop:pointcut id="actionPointCut"
 				expression="execution(* com.kool.core.base.IBaseAction.*(..))" />
-			<aop:before method="printTime" pointcut-ref="addAllMethod" />
-			<aop:after method="printTime" pointcut-ref="addAllMethod" />
+			<aop:before method="beforeAction" pointcut-ref="actionPointCut" />
+			<aop:after method="afterAction" pointcut-ref="actionPointCut" />
+			<aop:around method="aroundAction" pointcut-ref="actionPointCut"/>
 		</aop:aspect>
 	</aop:config>
 	<aop:aspectj-autoproxy proxy-target-class="true" />

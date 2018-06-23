@@ -1,0 +1,1630 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.pacs.dao.BasePcExamBookDao">
+	<resultMap id="BaseResultMap" type="com.kool.pacs.bean.PcExamBookBean">
+		<id column="EXAM_ID" property="examId" />
+		<result column="YJXH" property="yjxh" />
+		<result column="EXAM_SERIAL" property="examSerial" />
+		<result column="DOCTOR_ID" property="doctorId" />
+		<result column="DEPT_ID" property="deptId" />
+		<result column="CREATEDT" property="createdt" />
+		<result column="EXAM_TYPE" property="examType" />
+		<result column="ISEMERGENCY" property="isemergency" />
+		<result column="ISCURE" property="iscure" />
+		<result column="OWNCHARGE" property="owncharge" />
+		<result column="DISE_ID" property="diseId" />
+		<result column="PATIENT_ID" property="patientId" />
+		<result column="PATIENT_CODE" property="patientCode" />
+		<result column="PATIENT_NAME" property="patientName" />
+		<result column="OUT_ID" property="outId" />
+		<result column="EXAM_PURPOSE" property="examPurpose" />
+		<result column="EXAM_ZD" property="examZd" />
+		<result column="EXAM_ZS" property="examZs" />
+		<result column="EXAM_BS" property="examBs" />
+		<result column="EXAM_CT" property="examCt" />
+		<result column="BED_NO" property="bedNo" />
+		<result column="EXAMTYPE_ID" property="examtypeId" />
+		<result column="EXAMITEM_ID" property="examitemId" />
+		<result column="CHARGE_STATUS" property="chargeStatus" />
+		<result column="CHARGE_DT" property="chargeDt" />
+		<result column="FORM_STATUS" property="formStatus" />
+		<result column="SIGN_STATUS" property="signStatus" />
+		<result column="ISPRINT" property="isprint" />
+		<result column="APPT_ID" property="apptId" />
+		<result column="ORDERCODE" property="ordercode" />
+		<result column="SYSUPDATEDT" property="sysupdatedt" />
+		<result column="REMARK" property="remark" />
+		<result column="ILLNESS_LEVEL" property="illnessLevel" />
+		<result column="CONVOY_TYPE" property="convoyType" />
+		<result column="IS_BACTERIA" property="isBacteria" />
+	</resultMap>
+	<resultMap id="hashMap" type="java.util.HashMap">
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			EXAM_ID, 			
+			YJXH, 			
+			EXAM_SERIAL, 			
+			DOCTOR_ID, 			
+			DEPT_ID, 			
+			CREATEDT, 			
+			EXAM_TYPE, 			
+			ISEMERGENCY, 			
+			ISCURE, 			
+			OWNCHARGE, 			
+			DISE_ID, 			
+			PATIENT_ID, 			
+			PATIENT_CODE, 			
+			PATIENT_NAME, 			
+			OUT_ID, 			
+			EXAM_PURPOSE, 			
+			EXAM_ZD, 			
+			EXAM_ZS, 			
+			EXAM_BS, 			
+			EXAM_CT, 			
+			BED_NO, 			
+			EXAMTYPE_ID, 			
+			EXAMITEM_ID, 			
+			CHARGE_STATUS, 			
+			CHARGE_DT, 			
+			FORM_STATUS, 			
+			SIGN_STATUS, 			
+			ISPRINT, 			
+			APPT_ID, 			
+			ORDERCODE, 			
+			SYSUPDATEDT, 			
+			REMARK, 			
+			ILLNESS_LEVEL, 			
+			CONVOY_TYPE, 			
+			IS_BACTERIA			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		EXAM_ID
+	</sql>
+
+	<select id="select" parameterType="com.kool.pacs.bean.PcExamBookBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM PC_EXAM_BOOK WHERE 1=1 
+		<if test="examId != null and examId != ''">
+			AND EXAM_ID = #{examId}
+		</if>
+		
+		<if test="examSerial != null and examSerial != ''">
+			AND EXAM_SERIAL = #{examSerial}
+		</if>
+		<if test="doctorId != null and doctorId != ''">
+			AND DOCTOR_ID = #{doctorId}
+		</if>
+		<if test="deptId != null and deptId != ''">
+			AND DEPT_ID = #{deptId}
+		</if>
+		<if test="createdt != null and createdt != ''">
+			AND CREATEDT = #{createdt}
+		</if>
+		<if test="examType != null and examType != ''">
+			AND EXAM_TYPE = #{examType}
+		</if>
+		<if test="isemergency != null and isemergency != ''">
+			AND ISEMERGENCY = #{isemergency}
+		</if>
+		<if test="iscure != null and iscure != ''">
+			AND ISCURE = #{iscure}
+		</if>
+		<if test="owncharge != null and owncharge != ''">
+			AND OWNCHARGE = #{owncharge}
+		</if>
+		<if test="diseId != null and diseId != ''">
+			AND DISE_ID = #{diseId}
+		</if>
+		<if test="patientId != null and patientId != ''">
+			AND PATIENT_ID = #{patientId}
+		</if>
+		<if test="patientCode != null and patientCode != ''">
+			AND PATIENT_CODE = #{patientCode}
+		</if>
+		<if test="patientName != null and patientName != ''">
+			AND PATIENT_NAME = #{patientName}
+		</if>
+		<if test="outId != null and outId != ''">
+			AND OUT_ID = #{outId}
+		</if>
+		<if test="examPurpose != null and examPurpose != ''">
+			AND EXAM_PURPOSE = #{examPurpose}
+		</if>
+		<if test="examZd != null and examZd != ''">
+			AND EXAM_ZD = #{examZd}
+		</if>
+		<if test="examZs != null and examZs != ''">
+			AND EXAM_ZS = #{examZs}
+		</if>
+		<if test="examBs != null and examBs != ''">
+			AND EXAM_BS = #{examBs}
+		</if>
+		<if test="examCt != null and examCt != ''">
+			AND EXAM_CT = #{examCt}
+		</if>
+		<if test="bedNo != null and bedNo != ''">
+			AND BED_NO = #{bedNo}
+		</if>
+		<if test="examtypeId != null and examtypeId != ''">
+			AND EXAMTYPE_ID = #{examtypeId}
+		</if>
+		<if test="examitemId != null and examitemId != ''">
+			AND EXAMITEM_ID = #{examitemId}
+		</if>
+		<if test="chargeStatus != null and chargeStatus != ''">
+			AND CHARGE_STATUS = #{chargeStatus}
+		</if>
+		<if test="chargeDt != null and chargeDt != ''">
+			AND CHARGE_DT = #{chargeDt}
+		</if>
+		<if test="formStatus != null and formStatus != ''">
+			AND FORM_STATUS = #{formStatus}
+		</if>
+		<if test="signStatus != null and signStatus != ''">
+			AND SIGN_STATUS = #{signStatus}
+		</if>
+		<if test="isprint != null and isprint != ''">
+			AND ISPRINT = #{isprint}
+		</if>
+		<if test="apptId != null and apptId != ''">
+			AND APPT_ID = #{apptId}
+		</if>
+		
+		<if test="sysupdatedt != null and sysupdatedt != ''">
+			AND SYSUPDATEDT = #{sysupdatedt}
+		</if>
+		<if test="remark != null and remark != ''">
+			AND REMARK = #{remark}
+		</if>
+		<if test="illnessLevel != null and illnessLevel != ''">
+			AND ILLNESS_LEVEL = #{illnessLevel}
+		</if>
+		<if test="convoyType != null and convoyType != ''">
+			AND CONVOY_TYPE = #{convoyType}
+		</if>
+		<if test="isBacteria != null and isBacteria != ''">
+			AND IS_BACTERIA = #{isBacteria}
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<select id="selectByPK" parameterType="com.kool.pacs.bean.PcExamBookBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM PC_EXAM_BOOK
+		WHERE 
+		EXAM_ID = #{examId}
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<delete id="delete" parameterType="com.kool.pacs.bean.PcExamBookBean">
+		DELETE FROM PC_EXAM_BOOK
+		WHERE
+		EXAM_ID = #{examId}
+	</delete>
+	
+	<delete id="deletes" parameterType="com.kool.pacs.bean.PcExamBookBean">
+		DELETE FROM PC_EXAM_BOOK
+		WHERE 1=1 
+		<if test="examId != null and examId != ''">
+			AND EXAM_ID = #{examId}
+		</if>
+		
+		<if test="examSerial != null and examSerial != ''">
+			AND EXAM_SERIAL = #{examSerial}
+		</if>
+		<if test="doctorId != null and doctorId != ''">
+			AND DOCTOR_ID = #{doctorId}
+		</if>
+		<if test="deptId != null and deptId != ''">
+			AND DEPT_ID = #{deptId}
+		</if>
+		<if test="createdt != null and createdt != ''">
+			AND CREATEDT = #{createdt}
+		</if>
+		<if test="examType != null and examType != ''">
+			AND EXAM_TYPE = #{examType}
+		</if>
+		<if test="isemergency != null and isemergency != ''">
+			AND ISEMERGENCY = #{isemergency}
+		</if>
+		<if test="iscure != null and iscure != ''">
+			AND ISCURE = #{iscure}
+		</if>
+		<if test="owncharge != null and owncharge != ''">
+			AND OWNCHARGE = #{owncharge}
+		</if>
+		<if test="diseId != null and diseId != ''">
+			AND DISE_ID = #{diseId}
+		</if>
+		<if test="patientId != null and patientId != ''">
+			AND PATIENT_ID = #{patientId}
+		</if>
+		<if test="patientCode != null and patientCode != ''">
+			AND PATIENT_CODE = #{patientCode}
+		</if>
+		<if test="patientName != null and patientName != ''">
+			AND PATIENT_NAME = #{patientName}
+		</if>
+		<if test="outId != null and outId != ''">
+			AND OUT_ID = #{outId}
+		</if>
+		<if test="examPurpose != null and examPurpose != ''">
+			AND EXAM_PURPOSE = #{examPurpose}
+		</if>
+		<if test="examZd != null and examZd != ''">
+			AND EXAM_ZD = #{examZd}
+		</if>
+		<if test="examZs != null and examZs != ''">
+			AND EXAM_ZS = #{examZs}
+		</if>
+		<if test="examBs != null and examBs != ''">
+			AND EXAM_BS = #{examBs}
+		</if>
+		<if test="examCt != null and examCt != ''">
+			AND EXAM_CT = #{examCt}
+		</if>
+		<if test="bedNo != null and bedNo != ''">
+			AND BED_NO = #{bedNo}
+		</if>
+		<if test="examtypeId != null and examtypeId != ''">
+			AND EXAMTYPE_ID = #{examtypeId}
+		</if>
+		<if test="examitemId != null and examitemId != ''">
+			AND EXAMITEM_ID = #{examitemId}
+		</if>
+		<if test="chargeStatus != null and chargeStatus != ''">
+			AND CHARGE_STATUS = #{chargeStatus}
+		</if>
+		<if test="chargeDt != null and chargeDt != ''">
+			AND CHARGE_DT = #{chargeDt}
+		</if>
+		<if test="formStatus != null and formStatus != ''">
+			AND FORM_STATUS = #{formStatus}
+		</if>
+		<if test="signStatus != null and signStatus != ''">
+			AND SIGN_STATUS = #{signStatus}
+		</if>
+		<if test="isprint != null and isprint != ''">
+			AND ISPRINT = #{isprint}
+		</if>
+		<if test="apptId != null and apptId != ''">
+			AND APPT_ID = #{apptId}
+		</if>
+		
+		<if test="sysupdatedt != null and sysupdatedt != ''">
+			AND SYSUPDATEDT = #{sysupdatedt}
+		</if>
+		<if test="remark != null and remark != ''">
+			AND REMARK = #{remark}
+		</if>
+		<if test="illnessLevel != null and illnessLevel != ''">
+			AND ILLNESS_LEVEL = #{illnessLevel}
+		</if>
+		<if test="convoyType != null and convoyType != ''">
+			AND CONVOY_TYPE = #{convoyType}
+		</if>
+		<if test="isBacteria != null and isBacteria != ''">
+			AND IS_BACTERIA = #{isBacteria}
+		</if>
+	</delete>
+	
+	<insert id="insert" parameterType="com.kool.pacs.bean.PcExamBookBean">
+		INSERT INTO PC_EXAM_BOOK
+		<trim prefix="(" suffix=")" suffixOverrides=",">		
+			<if test="examId != null">
+				EXAM_ID,
+			</if>		
+			<if test="yjxh != null">
+				YJXH,
+			</if>		
+			<if test="examSerial != null">
+				EXAM_SERIAL,
+			</if>		
+			<if test="doctorId != null">
+				DOCTOR_ID,
+			</if>		
+			<if test="deptId != null">
+				DEPT_ID,
+			</if>		
+			<if test="createdt != null">
+				CREATEDT,
+			</if>		
+			<if test="examType != null">
+				EXAM_TYPE,
+			</if>		
+			<if test="isemergency != null">
+				ISEMERGENCY,
+			</if>		
+			<if test="iscure != null">
+				ISCURE,
+			</if>		
+			<if test="owncharge != null">
+				OWNCHARGE,
+			</if>		
+			<if test="diseId != null">
+				DISE_ID,
+			</if>		
+			<if test="patientId != null">
+				PATIENT_ID,
+			</if>		
+			<if test="patientCode != null">
+				PATIENT_CODE,
+			</if>		
+			<if test="patientName != null">
+				PATIENT_NAME,
+			</if>		
+			<if test="outId != null">
+				OUT_ID,
+			</if>		
+			<if test="examPurpose != null">
+				EXAM_PURPOSE,
+			</if>		
+			<if test="examZd != null">
+				EXAM_ZD,
+			</if>		
+			<if test="examZs != null">
+				EXAM_ZS,
+			</if>		
+			<if test="examBs != null">
+				EXAM_BS,
+			</if>		
+			<if test="examCt != null">
+				EXAM_CT,
+			</if>		
+			<if test="bedNo != null">
+				BED_NO,
+			</if>		
+			<if test="examtypeId != null">
+				EXAMTYPE_ID,
+			</if>		
+			<if test="examitemId != null">
+				EXAMITEM_ID,
+			</if>		
+			<if test="chargeStatus != null">
+				CHARGE_STATUS,
+			</if>		
+			<if test="chargeDt != null">
+				CHARGE_DT,
+			</if>		
+			<if test="formStatus != null">
+				FORM_STATUS,
+			</if>		
+			<if test="signStatus != null">
+				SIGN_STATUS,
+			</if>		
+			<if test="isprint != null">
+				ISPRINT,
+			</if>		
+			<if test="apptId != null">
+				APPT_ID,
+			</if>		
+			<if test="ordercode != null">
+				ORDERCODE,
+			</if>		
+			<if test="sysupdatedt != null">
+				SYSUPDATEDT,
+			</if>		
+			<if test="remark != null">
+				REMARK,
+			</if>		
+			<if test="illnessLevel != null">
+				ILLNESS_LEVEL,
+			</if>		
+			<if test="convoyType != null">
+				CONVOY_TYPE,
+			</if>		
+			<if test="isBacteria != null">
+				IS_BACTERIA,
+			</if>		
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="examId != null">
+				#{examId},
+			</if>	
+			<if test="yjxh != null">
+				#{yjxh},
+			</if>	
+			<if test="examSerial != null">
+				#{examSerial},
+			</if>	
+			<if test="doctorId != null">
+				#{doctorId},
+			</if>	
+			<if test="deptId != null">
+				#{deptId},
+			</if>	
+			<if test="createdt != null">
+				#{createdt},
+			</if>	
+			<if test="examType != null">
+				#{examType},
+			</if>	
+			<if test="isemergency != null">
+				#{isemergency},
+			</if>	
+			<if test="iscure != null">
+				#{iscure},
+			</if>	
+			<if test="owncharge != null">
+				#{owncharge},
+			</if>	
+			<if test="diseId != null">
+				#{diseId},
+			</if>	
+			<if test="patientId != null">
+				#{patientId},
+			</if>	
+			<if test="patientCode != null">
+				#{patientCode},
+			</if>	
+			<if test="patientName != null">
+				#{patientName},
+			</if>	
+			<if test="outId != null">
+				#{outId},
+			</if>	
+			<if test="examPurpose != null">
+				#{examPurpose},
+			</if>	
+			<if test="examZd != null">
+				#{examZd},
+			</if>	
+			<if test="examZs != null">
+				#{examZs},
+			</if>	
+			<if test="examBs != null">
+				#{examBs},
+			</if>	
+			<if test="examCt != null">
+				#{examCt},
+			</if>	
+			<if test="bedNo != null">
+				#{bedNo},
+			</if>	
+			<if test="examtypeId != null">
+				#{examtypeId},
+			</if>	
+			<if test="examitemId != null">
+				#{examitemId},
+			</if>	
+			<if test="chargeStatus != null">
+				#{chargeStatus},
+			</if>	
+			<if test="chargeDt != null">
+				#{chargeDt},
+			</if>	
+			<if test="formStatus != null">
+				#{formStatus},
+			</if>	
+			<if test="signStatus != null">
+				#{signStatus},
+			</if>	
+			<if test="isprint != null">
+				#{isprint},
+			</if>	
+			<if test="apptId != null">
+				#{apptId},
+			</if>	
+			<if test="ordercode != null">
+				#{ordercode},
+			</if>	
+			<if test="sysupdatedt != null">
+				#{sysupdatedt},
+			</if>	
+			<if test="remark != null">
+				#{remark},
+			</if>	
+			<if test="illnessLevel != null">
+				#{illnessLevel},
+			</if>	
+			<if test="convoyType != null">
+				#{convoyType},
+			</if>	
+			<if test="isBacteria != null">
+				#{isBacteria},
+			</if>	
+		</trim>
+	</insert>
+	
+	<update id="updates">
+		UPDATE PC_EXAM_BOOK
+		<set>
+			<if test="value.isInitExamId">
+				<choose>
+					<when test="value.examId != null">
+						EXAM_ID = #{value.examId},
+					</when>
+					<otherwise>
+						EXAM_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitYjxh">
+				<choose>
+					<when test="value.yjxh != null">
+						YJXH = #{value.yjxh},
+					</when>
+					<otherwise>
+						YJXH = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitExamSerial">
+				<choose>
+					<when test="value.examSerial != null">
+						EXAM_SERIAL = #{value.examSerial},
+					</when>
+					<otherwise>
+						EXAM_SERIAL = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitDoctorId">
+				<choose>
+					<when test="value.doctorId != null">
+						DOCTOR_ID = #{value.doctorId},
+					</when>
+					<otherwise>
+						DOCTOR_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitDeptId">
+				<choose>
+					<when test="value.deptId != null">
+						DEPT_ID = #{value.deptId},
+					</when>
+					<otherwise>
+						DEPT_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitCreatedt">
+				<choose>
+					<when test="value.createdt != null">
+						CREATEDT = #{value.createdt},
+					</when>
+					<otherwise>
+						CREATEDT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitExamType">
+				<choose>
+					<when test="value.examType != null">
+						EXAM_TYPE = #{value.examType},
+					</when>
+					<otherwise>
+						EXAM_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitIsemergency">
+				<choose>
+					<when test="value.isemergency != null">
+						ISEMERGENCY = #{value.isemergency},
+					</when>
+					<otherwise>
+						ISEMERGENCY = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitIscure">
+				<choose>
+					<when test="value.iscure != null">
+						ISCURE = #{value.iscure},
+					</when>
+					<otherwise>
+						ISCURE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitOwncharge">
+				<choose>
+					<when test="value.owncharge != null">
+						OWNCHARGE = #{value.owncharge},
+					</when>
+					<otherwise>
+						OWNCHARGE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitDiseId">
+				<choose>
+					<when test="value.diseId != null">
+						DISE_ID = #{value.diseId},
+					</when>
+					<otherwise>
+						DISE_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitPatientId">
+				<choose>
+					<when test="value.patientId != null">
+						PATIENT_ID = #{value.patientId},
+					</when>
+					<otherwise>
+						PATIENT_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitPatientCode">
+				<choose>
+					<when test="value.patientCode != null">
+						PATIENT_CODE = #{value.patientCode},
+					</when>
+					<otherwise>
+						PATIENT_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitPatientName">
+				<choose>
+					<when test="value.patientName != null">
+						PATIENT_NAME = #{value.patientName},
+					</when>
+					<otherwise>
+						PATIENT_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitOutId">
+				<choose>
+					<when test="value.outId != null">
+						OUT_ID = #{value.outId},
+					</when>
+					<otherwise>
+						OUT_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitExamPurpose">
+				<choose>
+					<when test="value.examPurpose != null">
+						EXAM_PURPOSE = #{value.examPurpose},
+					</when>
+					<otherwise>
+						EXAM_PURPOSE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitExamZd">
+				<choose>
+					<when test="value.examZd != null">
+						EXAM_ZD = #{value.examZd},
+					</when>
+					<otherwise>
+						EXAM_ZD = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitExamZs">
+				<choose>
+					<when test="value.examZs != null">
+						EXAM_ZS = #{value.examZs},
+					</when>
+					<otherwise>
+						EXAM_ZS = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitExamBs">
+				<choose>
+					<when test="value.examBs != null">
+						EXAM_BS = #{value.examBs},
+					</when>
+					<otherwise>
+						EXAM_BS = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitExamCt">
+				<choose>
+					<when test="value.examCt != null">
+						EXAM_CT = #{value.examCt},
+					</when>
+					<otherwise>
+						EXAM_CT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitBedNo">
+				<choose>
+					<when test="value.bedNo != null">
+						BED_NO = #{value.bedNo},
+					</when>
+					<otherwise>
+						BED_NO = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitExamtypeId">
+				<choose>
+					<when test="value.examtypeId != null">
+						EXAMTYPE_ID = #{value.examtypeId},
+					</when>
+					<otherwise>
+						EXAMTYPE_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitExamitemId">
+				<choose>
+					<when test="value.examitemId != null">
+						EXAMITEM_ID = #{value.examitemId},
+					</when>
+					<otherwise>
+						EXAMITEM_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitChargeStatus">
+				<choose>
+					<when test="value.chargeStatus != null">
+						CHARGE_STATUS = #{value.chargeStatus},
+					</when>
+					<otherwise>
+						CHARGE_STATUS = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitChargeDt">
+				<choose>
+					<when test="value.chargeDt != null">
+						CHARGE_DT = #{value.chargeDt},
+					</when>
+					<otherwise>
+						CHARGE_DT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitFormStatus">
+				<choose>
+					<when test="value.formStatus != null">
+						FORM_STATUS = #{value.formStatus},
+					</when>
+					<otherwise>
+						FORM_STATUS = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSignStatus">
+				<choose>
+					<when test="value.signStatus != null">
+						SIGN_STATUS = #{value.signStatus},
+					</when>
+					<otherwise>
+						SIGN_STATUS = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitIsprint">
+				<choose>
+					<when test="value.isprint != null">
+						ISPRINT = #{value.isprint},
+					</when>
+					<otherwise>
+						ISPRINT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitApptId">
+				<choose>
+					<when test="value.apptId != null">
+						APPT_ID = #{value.apptId},
+					</when>
+					<otherwise>
+						APPT_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitOrdercode">
+				<choose>
+					<when test="value.ordercode != null">
+						ORDERCODE = #{value.ordercode},
+					</when>
+					<otherwise>
+						ORDERCODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSysupdatedt">
+				<choose>
+					<when test="value.sysupdatedt != null">
+						SYSUPDATEDT = #{value.sysupdatedt},
+					</when>
+					<otherwise>
+						SYSUPDATEDT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitRemark">
+				<choose>
+					<when test="value.remark != null">
+						REMARK = #{value.remark},
+					</when>
+					<otherwise>
+						REMARK = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitIllnessLevel">
+				<choose>
+					<when test="value.illnessLevel != null">
+						ILLNESS_LEVEL = #{value.illnessLevel},
+					</when>
+					<otherwise>
+						ILLNESS_LEVEL = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitConvoyType">
+				<choose>
+					<when test="value.convoyType != null">
+						CONVOY_TYPE = #{value.convoyType},
+					</when>
+					<otherwise>
+						CONVOY_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitIsBacteria">
+				<choose>
+					<when test="value.isBacteria != null">
+						IS_BACTERIA = #{value.isBacteria},
+					</when>
+					<otherwise>
+						IS_BACTERIA = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 1=1 
+		<if test="condition.examId != null and condition.examId != ''">
+			AND EXAM_ID =	#{condition.examId} 
+		</if>
+		
+		<if test="condition.examSerial != null and condition.examSerial != ''">
+			AND EXAM_SERIAL =	#{condition.examSerial} 
+		</if>
+		<if test="condition.doctorId != null and condition.doctorId != ''">
+			AND DOCTOR_ID =	#{condition.doctorId} 
+		</if>
+		<if test="condition.deptId != null and condition.deptId != ''">
+			AND DEPT_ID =	#{condition.deptId} 
+		</if>
+		<if test="condition.createdt != null and condition.createdt != ''">
+			AND CREATEDT =	#{condition.createdt} 
+		</if>
+		<if test="condition.examType != null and condition.examType != ''">
+			AND EXAM_TYPE =	#{condition.examType} 
+		</if>
+		<if test="condition.isemergency != null and condition.isemergency != ''">
+			AND ISEMERGENCY =	#{condition.isemergency} 
+		</if>
+		<if test="condition.iscure != null and condition.iscure != ''">
+			AND ISCURE =	#{condition.iscure} 
+		</if>
+		<if test="condition.owncharge != null and condition.owncharge != ''">
+			AND OWNCHARGE =	#{condition.owncharge} 
+		</if>
+		<if test="condition.diseId != null and condition.diseId != ''">
+			AND DISE_ID =	#{condition.diseId} 
+		</if>
+		<if test="condition.patientId != null and condition.patientId != ''">
+			AND PATIENT_ID =	#{condition.patientId} 
+		</if>
+		<if test="condition.patientCode != null and condition.patientCode != ''">
+			AND PATIENT_CODE =	#{condition.patientCode} 
+		</if>
+		<if test="condition.patientName != null and condition.patientName != ''">
+			AND PATIENT_NAME =	#{condition.patientName} 
+		</if>
+		<if test="condition.outId != null and condition.outId != ''">
+			AND OUT_ID =	#{condition.outId} 
+		</if>
+		<if test="condition.examPurpose != null and condition.examPurpose != ''">
+			AND EXAM_PURPOSE =	#{condition.examPurpose} 
+		</if>
+		<if test="condition.examZd != null and condition.examZd != ''">
+			AND EXAM_ZD =	#{condition.examZd} 
+		</if>
+		<if test="condition.examZs != null and condition.examZs != ''">
+			AND EXAM_ZS =	#{condition.examZs} 
+		</if>
+		<if test="condition.examBs != null and condition.examBs != ''">
+			AND EXAM_BS =	#{condition.examBs} 
+		</if>
+		<if test="condition.examCt != null and condition.examCt != ''">
+			AND EXAM_CT =	#{condition.examCt} 
+		</if>
+		<if test="condition.bedNo != null and condition.bedNo != ''">
+			AND BED_NO =	#{condition.bedNo} 
+		</if>
+		<if test="condition.examtypeId != null and condition.examtypeId != ''">
+			AND EXAMTYPE_ID =	#{condition.examtypeId} 
+		</if>
+		<if test="condition.examitemId != null and condition.examitemId != ''">
+			AND EXAMITEM_ID =	#{condition.examitemId} 
+		</if>
+		<if test="condition.chargeStatus != null and condition.chargeStatus != ''">
+			AND CHARGE_STATUS =	#{condition.chargeStatus} 
+		</if>
+		<if test="condition.chargeDt != null and condition.chargeDt != ''">
+			AND CHARGE_DT =	#{condition.chargeDt} 
+		</if>
+		<if test="condition.formStatus != null and condition.formStatus != ''">
+			AND FORM_STATUS =	#{condition.formStatus} 
+		</if>
+		<if test="condition.signStatus != null and condition.signStatus != ''">
+			AND SIGN_STATUS =	#{condition.signStatus} 
+		</if>
+		<if test="condition.isprint != null and condition.isprint != ''">
+			AND ISPRINT =	#{condition.isprint} 
+		</if>
+		<if test="condition.apptId != null and condition.apptId != ''">
+			AND APPT_ID =	#{condition.apptId} 
+		</if>
+		
+		<if test="condition.sysupdatedt != null and condition.sysupdatedt != ''">
+			AND SYSUPDATEDT =	#{condition.sysupdatedt} 
+		</if>
+		<if test="condition.remark != null and condition.remark != ''">
+			AND REMARK =	#{condition.remark} 
+		</if>
+		<if test="condition.illnessLevel != null and condition.illnessLevel != ''">
+			AND ILLNESS_LEVEL =	#{condition.illnessLevel} 
+		</if>
+		<if test="condition.convoyType != null and condition.convoyType != ''">
+			AND CONVOY_TYPE =	#{condition.convoyType} 
+		</if>
+		<if test="condition.isBacteria != null and condition.isBacteria != ''">
+			AND IS_BACTERIA =	#{condition.isBacteria} 
+		</if>
+	</update>
+	
+	<update id="update" parameterType="com.kool.pacs.bean.PcExamBookBean">
+		UPDATE PC_EXAM_BOOK
+		<set>
+			<if test="isInitExamId">
+				<choose>
+					<when test="examId != null">
+						EXAM_ID = #{examId},
+					</when>
+					<otherwise>
+						EXAM_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitYjxh">
+				<choose>
+					<when test="yjxh != null">
+						YJXH = #{yjxh},
+					</when>
+					<otherwise>
+						YJXH = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitExamSerial">
+				<choose>
+					<when test="examSerial != null">
+						EXAM_SERIAL = #{examSerial},
+					</when>
+					<otherwise>
+						EXAM_SERIAL = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitDoctorId">
+				<choose>
+					<when test="doctorId != null">
+						DOCTOR_ID = #{doctorId},
+					</when>
+					<otherwise>
+						DOCTOR_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitDeptId">
+				<choose>
+					<when test="deptId != null">
+						DEPT_ID = #{deptId},
+					</when>
+					<otherwise>
+						DEPT_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitCreatedt">
+				<choose>
+					<when test="createdt != null">
+						CREATEDT = #{createdt},
+					</when>
+					<otherwise>
+						CREATEDT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitExamType">
+				<choose>
+					<when test="examType != null">
+						EXAM_TYPE = #{examType},
+					</when>
+					<otherwise>
+						EXAM_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitIsemergency">
+				<choose>
+					<when test="isemergency != null">
+						ISEMERGENCY = #{isemergency},
+					</when>
+					<otherwise>
+						ISEMERGENCY = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitIscure">
+				<choose>
+					<when test="iscure != null">
+						ISCURE = #{iscure},
+					</when>
+					<otherwise>
+						ISCURE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitOwncharge">
+				<choose>
+					<when test="owncharge != null">
+						OWNCHARGE = #{owncharge},
+					</when>
+					<otherwise>
+						OWNCHARGE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitDiseId">
+				<choose>
+					<when test="diseId != null">
+						DISE_ID = #{diseId},
+					</when>
+					<otherwise>
+						DISE_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitPatientId">
+				<choose>
+					<when test="patientId != null">
+						PATIENT_ID = #{patientId},
+					</when>
+					<otherwise>
+						PATIENT_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitPatientCode">
+				<choose>
+					<when test="patientCode != null">
+						PATIENT_CODE = #{patientCode},
+					</when>
+					<otherwise>
+						PATIENT_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitPatientName">
+				<choose>
+					<when test="patientName != null">
+						PATIENT_NAME = #{patientName},
+					</when>
+					<otherwise>
+						PATIENT_NAME = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitOutId">
+				<choose>
+					<when test="outId != null">
+						OUT_ID = #{outId},
+					</when>
+					<otherwise>
+						OUT_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitExamPurpose">
+				<choose>
+					<when test="examPurpose != null">
+						EXAM_PURPOSE = #{examPurpose},
+					</when>
+					<otherwise>
+						EXAM_PURPOSE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitExamZd">
+				<choose>
+					<when test="examZd != null">
+						EXAM_ZD = #{examZd},
+					</when>
+					<otherwise>
+						EXAM_ZD = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitExamZs">
+				<choose>
+					<when test="examZs != null">
+						EXAM_ZS = #{examZs},
+					</when>
+					<otherwise>
+						EXAM_ZS = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitExamBs">
+				<choose>
+					<when test="examBs != null">
+						EXAM_BS = #{examBs},
+					</when>
+					<otherwise>
+						EXAM_BS = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitExamCt">
+				<choose>
+					<when test="examCt != null">
+						EXAM_CT = #{examCt},
+					</when>
+					<otherwise>
+						EXAM_CT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitBedNo">
+				<choose>
+					<when test="bedNo != null">
+						BED_NO = #{bedNo},
+					</when>
+					<otherwise>
+						BED_NO = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitExamtypeId">
+				<choose>
+					<when test="examtypeId != null">
+						EXAMTYPE_ID = #{examtypeId},
+					</when>
+					<otherwise>
+						EXAMTYPE_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitExamitemId">
+				<choose>
+					<when test="examitemId != null">
+						EXAMITEM_ID = #{examitemId},
+					</when>
+					<otherwise>
+						EXAMITEM_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitChargeStatus">
+				<choose>
+					<when test="chargeStatus != null">
+						CHARGE_STATUS = #{chargeStatus},
+					</when>
+					<otherwise>
+						CHARGE_STATUS = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitChargeDt">
+				<choose>
+					<when test="chargeDt != null">
+						CHARGE_DT = #{chargeDt},
+					</when>
+					<otherwise>
+						CHARGE_DT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitFormStatus">
+				<choose>
+					<when test="formStatus != null">
+						FORM_STATUS = #{formStatus},
+					</when>
+					<otherwise>
+						FORM_STATUS = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSignStatus">
+				<choose>
+					<when test="signStatus != null">
+						SIGN_STATUS = #{signStatus},
+					</when>
+					<otherwise>
+						SIGN_STATUS = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitIsprint">
+				<choose>
+					<when test="isprint != null">
+						ISPRINT = #{isprint},
+					</when>
+					<otherwise>
+						ISPRINT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitApptId">
+				<choose>
+					<when test="apptId != null">
+						APPT_ID = #{apptId},
+					</when>
+					<otherwise>
+						APPT_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitOrdercode">
+				<choose>
+					<when test="ordercode != null">
+						ORDERCODE = #{ordercode},
+					</when>
+					<otherwise>
+						ORDERCODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSysupdatedt">
+				<choose>
+					<when test="sysupdatedt != null">
+						SYSUPDATEDT = #{sysupdatedt},
+					</when>
+					<otherwise>
+						SYSUPDATEDT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitRemark">
+				<choose>
+					<when test="remark != null">
+						REMARK = #{remark},
+					</when>
+					<otherwise>
+						REMARK = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitIllnessLevel">
+				<choose>
+					<when test="illnessLevel != null">
+						ILLNESS_LEVEL = #{illnessLevel},
+					</when>
+					<otherwise>
+						ILLNESS_LEVEL = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitConvoyType">
+				<choose>
+					<when test="convoyType != null">
+						CONVOY_TYPE = #{convoyType},
+					</when>
+					<otherwise>
+						CONVOY_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitIsBacteria">
+				<choose>
+					<when test="isBacteria != null">
+						IS_BACTERIA = #{isBacteria},
+					</when>
+					<otherwise>
+						IS_BACTERIA = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 
+		EXAM_ID = #{examId}
+	</update>	
+	
+	<select id="selectPage" resultMap="BaseResultMap">
+		SELECT 
+		<include refid="Base_Column_List" />
+		FROM
+		PC_EXAM_BOOK WHERE 1=1
+		<if test="pcExamBook!=null">
+			<if test="pcExamBook.examId != null and pcExamBook.examId != ''">
+				AND EXAM_ID = #{pcExamBook.examId}
+			</if>
+			
+			<if test="pcExamBook.examSerial != null and pcExamBook.examSerial != ''">
+				AND EXAM_SERIAL = #{pcExamBook.examSerial}
+			</if>
+			<if test="pcExamBook.doctorId != null and pcExamBook.doctorId != ''">
+				AND DOCTOR_ID = #{pcExamBook.doctorId}
+			</if>
+			<if test="pcExamBook.deptId != null and pcExamBook.deptId != ''">
+				AND DEPT_ID = #{pcExamBook.deptId}
+			</if>
+			<if test="pcExamBook.createdt != null and pcExamBook.createdt != ''">
+				AND CREATEDT = #{pcExamBook.createdt}
+			</if>
+			<if test="pcExamBook.examType != null and pcExamBook.examType != ''">
+				AND EXAM_TYPE = #{pcExamBook.examType}
+			</if>
+			<if test="pcExamBook.isemergency != null and pcExamBook.isemergency != ''">
+				AND ISEMERGENCY = #{pcExamBook.isemergency}
+			</if>
+			<if test="pcExamBook.iscure != null and pcExamBook.iscure != ''">
+				AND ISCURE = #{pcExamBook.iscure}
+			</if>
+			<if test="pcExamBook.owncharge != null and pcExamBook.owncharge != ''">
+				AND OWNCHARGE = #{pcExamBook.owncharge}
+			</if>
+			<if test="pcExamBook.diseId != null and pcExamBook.diseId != ''">
+				AND DISE_ID = #{pcExamBook.diseId}
+			</if>
+			<if test="pcExamBook.patientId != null and pcExamBook.patientId != ''">
+				AND PATIENT_ID = #{pcExamBook.patientId}
+			</if>
+			<if test="pcExamBook.patientCode != null and pcExamBook.patientCode != ''">
+				AND PATIENT_CODE = #{pcExamBook.patientCode}
+			</if>
+			<if test="pcExamBook.patientName != null and pcExamBook.patientName != ''">
+				AND PATIENT_NAME = #{pcExamBook.patientName}
+			</if>
+			<if test="pcExamBook.outId != null and pcExamBook.outId != ''">
+				AND OUT_ID = #{pcExamBook.outId}
+			</if>
+			<if test="pcExamBook.examPurpose != null and pcExamBook.examPurpose != ''">
+				AND EXAM_PURPOSE = #{pcExamBook.examPurpose}
+			</if>
+			<if test="pcExamBook.examZd != null and pcExamBook.examZd != ''">
+				AND EXAM_ZD = #{pcExamBook.examZd}
+			</if>
+			<if test="pcExamBook.examZs != null and pcExamBook.examZs != ''">
+				AND EXAM_ZS = #{pcExamBook.examZs}
+			</if>
+			<if test="pcExamBook.examBs != null and pcExamBook.examBs != ''">
+				AND EXAM_BS = #{pcExamBook.examBs}
+			</if>
+			<if test="pcExamBook.examCt != null and pcExamBook.examCt != ''">
+				AND EXAM_CT = #{pcExamBook.examCt}
+			</if>
+			<if test="pcExamBook.bedNo != null and pcExamBook.bedNo != ''">
+				AND BED_NO = #{pcExamBook.bedNo}
+			</if>
+			<if test="pcExamBook.examtypeId != null and pcExamBook.examtypeId != ''">
+				AND EXAMTYPE_ID = #{pcExamBook.examtypeId}
+			</if>
+			<if test="pcExamBook.examitemId != null and pcExamBook.examitemId != ''">
+				AND EXAMITEM_ID = #{pcExamBook.examitemId}
+			</if>
+			<if test="pcExamBook.chargeStatus != null and pcExamBook.chargeStatus != ''">
+				AND CHARGE_STATUS = #{pcExamBook.chargeStatus}
+			</if>
+			<if test="pcExamBook.chargeDt != null and pcExamBook.chargeDt != ''">
+				AND CHARGE_DT = #{pcExamBook.chargeDt}
+			</if>
+			<if test="pcExamBook.formStatus != null and pcExamBook.formStatus != ''">
+				AND FORM_STATUS = #{pcExamBook.formStatus}
+			</if>
+			<if test="pcExamBook.signStatus != null and pcExamBook.signStatus != ''">
+				AND SIGN_STATUS = #{pcExamBook.signStatus}
+			</if>
+			<if test="pcExamBook.isprint != null and pcExamBook.isprint != ''">
+				AND ISPRINT = #{pcExamBook.isprint}
+			</if>
+			<if test="pcExamBook.apptId != null and pcExamBook.apptId != ''">
+				AND APPT_ID = #{pcExamBook.apptId}
+			</if>
+			
+			<if test="pcExamBook.sysupdatedt != null and pcExamBook.sysupdatedt != ''">
+				AND SYSUPDATEDT = #{pcExamBook.sysupdatedt}
+			</if>
+			<if test="pcExamBook.remark != null and pcExamBook.remark != ''">
+				AND REMARK = #{pcExamBook.remark}
+			</if>
+			<if test="pcExamBook.illnessLevel != null and pcExamBook.illnessLevel != ''">
+				AND ILLNESS_LEVEL = #{pcExamBook.illnessLevel}
+			</if>
+			<if test="pcExamBook.convoyType != null and pcExamBook.convoyType != ''">
+				AND CONVOY_TYPE = #{pcExamBook.convoyType}
+			</if>
+			<if test="pcExamBook.isBacteria != null and pcExamBook.isBacteria != ''">
+				AND IS_BACTERIA = #{pcExamBook.isBacteria}
+			</if>
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+		LIMIT #{offset},#{pageSize}
+	</select>
+	
+	<select id="selectTotal" parameterType="com.kool.pacs.bean.PcExamBookBean" resultType="Integer">
+		SELECT COUNT(*) TOTALRECORD FROM PC_EXAM_BOOK
+		WHERE 1=1
+		<if test="_parameter!=null">
+			<if test="examId != null and examId != ''">
+				AND EXAM_ID = #{examId}
+			</if>
+			
+			<if test="examSerial != null and examSerial != ''">
+				AND EXAM_SERIAL = #{examSerial}
+			</if>
+			<if test="doctorId != null and doctorId != ''">
+				AND DOCTOR_ID = #{doctorId}
+			</if>
+			<if test="deptId != null and deptId != ''">
+				AND DEPT_ID = #{deptId}
+			</if>
+			<if test="createdt != null and createdt != ''">
+				AND CREATEDT = #{createdt}
+			</if>
+			<if test="examType != null and examType != ''">
+				AND EXAM_TYPE = #{examType}
+			</if>
+			<if test="isemergency != null and isemergency != ''">
+				AND ISEMERGENCY = #{isemergency}
+			</if>
+			<if test="iscure != null and iscure != ''">
+				AND ISCURE = #{iscure}
+			</if>
+			<if test="owncharge != null and owncharge != ''">
+				AND OWNCHARGE = #{owncharge}
+			</if>
+			<if test="diseId != null and diseId != ''">
+				AND DISE_ID = #{diseId}
+			</if>
+			<if test="patientId != null and patientId != ''">
+				AND PATIENT_ID = #{patientId}
+			</if>
+			<if test="patientCode != null and patientCode != ''">
+				AND PATIENT_CODE = #{patientCode}
+			</if>
+			<if test="patientName != null and patientName != ''">
+				AND PATIENT_NAME = #{patientName}
+			</if>
+			<if test="outId != null and outId != ''">
+				AND OUT_ID = #{outId}
+			</if>
+			<if test="examPurpose != null and examPurpose != ''">
+				AND EXAM_PURPOSE = #{examPurpose}
+			</if>
+			<if test="examZd != null and examZd != ''">
+				AND EXAM_ZD = #{examZd}
+			</if>
+			<if test="examZs != null and examZs != ''">
+				AND EXAM_ZS = #{examZs}
+			</if>
+			<if test="examBs != null and examBs != ''">
+				AND EXAM_BS = #{examBs}
+			</if>
+			<if test="examCt != null and examCt != ''">
+				AND EXAM_CT = #{examCt}
+			</if>
+			<if test="bedNo != null and bedNo != ''">
+				AND BED_NO = #{bedNo}
+			</if>
+			<if test="examtypeId != null and examtypeId != ''">
+				AND EXAMTYPE_ID = #{examtypeId}
+			</if>
+			<if test="examitemId != null and examitemId != ''">
+				AND EXAMITEM_ID = #{examitemId}
+			</if>
+			<if test="chargeStatus != null and chargeStatus != ''">
+				AND CHARGE_STATUS = #{chargeStatus}
+			</if>
+			<if test="chargeDt != null and chargeDt != ''">
+				AND CHARGE_DT = #{chargeDt}
+			</if>
+			<if test="formStatus != null and formStatus != ''">
+				AND FORM_STATUS = #{formStatus}
+			</if>
+			<if test="signStatus != null and signStatus != ''">
+				AND SIGN_STATUS = #{signStatus}
+			</if>
+			<if test="isprint != null and isprint != ''">
+				AND ISPRINT = #{isprint}
+			</if>
+			<if test="apptId != null and apptId != ''">
+				AND APPT_ID = #{apptId}
+			</if>
+			
+			<if test="sysupdatedt != null and sysupdatedt != ''">
+				AND SYSUPDATEDT = #{sysupdatedt}
+			</if>
+			<if test="remark != null and remark != ''">
+				AND REMARK = #{remark}
+			</if>
+			<if test="illnessLevel != null and illnessLevel != ''">
+				AND ILLNESS_LEVEL = #{illnessLevel}
+			</if>
+			<if test="convoyType != null and convoyType != ''">
+				AND CONVOY_TYPE = #{convoyType}
+			</if>
+			<if test="isBacteria != null and isBacteria != ''">
+				AND IS_BACTERIA = #{isBacteria}
+			</if>
+		</if>
+	</select>
+	
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO PC_EXAM_BOOK(
+		<include refid="Base_Column_List" />
+		) VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			#{item.examId},		
+			#{item.yjxh},		
+			#{item.examSerial},		
+			#{item.doctorId},		
+			#{item.deptId},		
+			#{item.createdt},		
+			#{item.examType},		
+			#{item.isemergency},		
+			#{item.iscure},		
+			#{item.owncharge},		
+			#{item.diseId},		
+			#{item.patientId},		
+			#{item.patientCode},		
+			#{item.patientName},		
+			#{item.outId},		
+			#{item.examPurpose},		
+			#{item.examZd},		
+			#{item.examZs},		
+			#{item.examBs},		
+			#{item.examCt},		
+			#{item.bedNo},		
+			#{item.examtypeId},		
+			#{item.examitemId},		
+			#{item.chargeStatus},		
+			#{item.chargeDt},		
+			#{item.formStatus},		
+			#{item.signStatus},		
+			#{item.isprint},		
+			#{item.apptId},		
+			#{item.ordercode},		
+			#{item.sysupdatedt},		
+			#{item.remark},		
+			#{item.illnessLevel},		
+			#{item.convoyType},		
+			#{item.isBacteria},		
+		</trim>
+		</foreach>
+	</insert>
+
+	<select id="selectBySql" parameterType="java.lang.String"
+		resultMap="hashMap">
+		${_parameter}
+	</select>
+
+	<select id="selectTotalBySql" parameterType="java.lang.String"
+		resultType="Integer">
+		${_parameter}
+	</select>
+</mapper>  

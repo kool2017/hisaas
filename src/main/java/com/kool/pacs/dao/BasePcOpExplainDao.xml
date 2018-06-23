@@ -1,0 +1,584 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.pacs.dao.BasePcOpExplainDao">
+	<resultMap id="BaseResultMap" type="com.kool.pacs.bean.PcOpExplainBean">
+		<id column="EXPLAIN_ID" property="explainId" />
+		<result column="EXPLAIN_TITLE" property="explainTitle" />
+		<result column="EXPLAIN_CONTENT" property="explainContent" />
+		<result column="EXPLAIN_CODE" property="explainCode" />
+		<result column="EXPLAIN_TYPE" property="explainType" />
+		<result column="PARENT_UUID" property="parentUuid" />
+		<result column="PERSON_ID" property="personId" />
+		<result column="ORDERCODE" property="ordercode" />
+		<result column="CREATEDT" property="createdt" />
+		<result column="STATUS" property="status" />
+		<result column="REMARK" property="remark" />
+	</resultMap>
+	<resultMap id="hashMap" type="java.util.HashMap">
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			EXPLAIN_ID, 			
+			EXPLAIN_TITLE, 			
+			EXPLAIN_CONTENT, 			
+			EXPLAIN_CODE, 			
+			EXPLAIN_TYPE, 			
+			PARENT_UUID, 			
+			PERSON_ID, 			
+			ORDERCODE, 			
+			CREATEDT, 			
+			STATUS, 			
+			REMARK			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		EXPLAIN_ID
+	</sql>
+
+	<select id="select" parameterType="com.kool.pacs.bean.PcOpExplainBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM PC_OP_EXPLAIN WHERE 1=1 
+		<if test="explainId != null and explainId != ''">
+			AND EXPLAIN_ID = #{explainId}
+		</if>
+		<if test="explainTitle != null and explainTitle != ''">
+			AND EXPLAIN_TITLE = #{explainTitle}
+		</if>
+		<if test="explainContent != null and explainContent != ''">
+			AND EXPLAIN_CONTENT = #{explainContent}
+		</if>
+		<if test="explainCode != null and explainCode != ''">
+			AND EXPLAIN_CODE = #{explainCode}
+		</if>
+		<if test="explainType != null and explainType != ''">
+			AND EXPLAIN_TYPE = #{explainType}
+		</if>
+		<if test="parentUuid != null and parentUuid != ''">
+			AND PARENT_UUID = #{parentUuid}
+		</if>
+		<if test="personId != null and personId != ''">
+			AND PERSON_ID = #{personId}
+		</if>
+		
+		<if test="createdt != null and createdt != ''">
+			AND CREATEDT = #{createdt}
+		</if>
+		<if test="status != null and status != ''">
+			AND STATUS = #{status}
+		</if>
+		<if test="remark != null and remark != ''">
+			AND REMARK = #{remark}
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<select id="selectByPK" parameterType="com.kool.pacs.bean.PcOpExplainBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM PC_OP_EXPLAIN
+		WHERE 
+		EXPLAIN_ID = #{explainId}
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<delete id="delete" parameterType="com.kool.pacs.bean.PcOpExplainBean">
+		DELETE FROM PC_OP_EXPLAIN
+		WHERE
+		EXPLAIN_ID = #{explainId}
+	</delete>
+	
+	<delete id="deletes" parameterType="com.kool.pacs.bean.PcOpExplainBean">
+		DELETE FROM PC_OP_EXPLAIN
+		WHERE 1=1 
+		<if test="explainId != null and explainId != ''">
+			AND EXPLAIN_ID = #{explainId}
+		</if>
+		<if test="explainTitle != null and explainTitle != ''">
+			AND EXPLAIN_TITLE = #{explainTitle}
+		</if>
+		<if test="explainContent != null and explainContent != ''">
+			AND EXPLAIN_CONTENT = #{explainContent}
+		</if>
+		<if test="explainCode != null and explainCode != ''">
+			AND EXPLAIN_CODE = #{explainCode}
+		</if>
+		<if test="explainType != null and explainType != ''">
+			AND EXPLAIN_TYPE = #{explainType}
+		</if>
+		<if test="parentUuid != null and parentUuid != ''">
+			AND PARENT_UUID = #{parentUuid}
+		</if>
+		<if test="personId != null and personId != ''">
+			AND PERSON_ID = #{personId}
+		</if>
+		
+		<if test="createdt != null and createdt != ''">
+			AND CREATEDT = #{createdt}
+		</if>
+		<if test="status != null and status != ''">
+			AND STATUS = #{status}
+		</if>
+		<if test="remark != null and remark != ''">
+			AND REMARK = #{remark}
+		</if>
+	</delete>
+	
+	<insert id="insert" parameterType="com.kool.pacs.bean.PcOpExplainBean">
+		INSERT INTO PC_OP_EXPLAIN
+		<trim prefix="(" suffix=")" suffixOverrides=",">		
+			<if test="explainId != null">
+				EXPLAIN_ID,
+			</if>		
+			<if test="explainTitle != null">
+				EXPLAIN_TITLE,
+			</if>		
+			<if test="explainContent != null">
+				EXPLAIN_CONTENT,
+			</if>		
+			<if test="explainCode != null">
+				EXPLAIN_CODE,
+			</if>		
+			<if test="explainType != null">
+				EXPLAIN_TYPE,
+			</if>		
+			<if test="parentUuid != null">
+				PARENT_UUID,
+			</if>		
+			<if test="personId != null">
+				PERSON_ID,
+			</if>		
+			<if test="ordercode != null">
+				ORDERCODE,
+			</if>		
+			<if test="createdt != null">
+				CREATEDT,
+			</if>		
+			<if test="status != null">
+				STATUS,
+			</if>		
+			<if test="remark != null">
+				REMARK,
+			</if>		
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="explainId != null">
+				#{explainId},
+			</if>	
+			<if test="explainTitle != null">
+				#{explainTitle},
+			</if>	
+			<if test="explainContent != null">
+				#{explainContent},
+			</if>	
+			<if test="explainCode != null">
+				#{explainCode},
+			</if>	
+			<if test="explainType != null">
+				#{explainType},
+			</if>	
+			<if test="parentUuid != null">
+				#{parentUuid},
+			</if>	
+			<if test="personId != null">
+				#{personId},
+			</if>	
+			<if test="ordercode != null">
+				#{ordercode},
+			</if>	
+			<if test="createdt != null">
+				#{createdt},
+			</if>	
+			<if test="status != null">
+				#{status},
+			</if>	
+			<if test="remark != null">
+				#{remark},
+			</if>	
+		</trim>
+	</insert>
+	
+	<update id="updates">
+		UPDATE PC_OP_EXPLAIN
+		<set>
+			<if test="value.isInitExplainId">
+				<choose>
+					<when test="value.explainId != null">
+						EXPLAIN_ID = #{value.explainId},
+					</when>
+					<otherwise>
+						EXPLAIN_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitExplainTitle">
+				<choose>
+					<when test="value.explainTitle != null">
+						EXPLAIN_TITLE = #{value.explainTitle},
+					</when>
+					<otherwise>
+						EXPLAIN_TITLE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitExplainContent">
+				<choose>
+					<when test="value.explainContent != null">
+						EXPLAIN_CONTENT = #{value.explainContent},
+					</when>
+					<otherwise>
+						EXPLAIN_CONTENT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitExplainCode">
+				<choose>
+					<when test="value.explainCode != null">
+						EXPLAIN_CODE = #{value.explainCode},
+					</when>
+					<otherwise>
+						EXPLAIN_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitExplainType">
+				<choose>
+					<when test="value.explainType != null">
+						EXPLAIN_TYPE = #{value.explainType},
+					</when>
+					<otherwise>
+						EXPLAIN_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitParentUuid">
+				<choose>
+					<when test="value.parentUuid != null">
+						PARENT_UUID = #{value.parentUuid},
+					</when>
+					<otherwise>
+						PARENT_UUID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitPersonId">
+				<choose>
+					<when test="value.personId != null">
+						PERSON_ID = #{value.personId},
+					</when>
+					<otherwise>
+						PERSON_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitOrdercode">
+				<choose>
+					<when test="value.ordercode != null">
+						ORDERCODE = #{value.ordercode},
+					</when>
+					<otherwise>
+						ORDERCODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitCreatedt">
+				<choose>
+					<when test="value.createdt != null">
+						CREATEDT = #{value.createdt},
+					</when>
+					<otherwise>
+						CREATEDT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitStatus">
+				<choose>
+					<when test="value.status != null">
+						STATUS = #{value.status},
+					</when>
+					<otherwise>
+						STATUS = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitRemark">
+				<choose>
+					<when test="value.remark != null">
+						REMARK = #{value.remark},
+					</when>
+					<otherwise>
+						REMARK = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 1=1 
+		<if test="condition.explainId != null and condition.explainId != ''">
+			AND EXPLAIN_ID =	#{condition.explainId} 
+		</if>
+		<if test="condition.explainTitle != null and condition.explainTitle != ''">
+			AND EXPLAIN_TITLE =	#{condition.explainTitle} 
+		</if>
+		<if test="condition.explainContent != null and condition.explainContent != ''">
+			AND EXPLAIN_CONTENT =	#{condition.explainContent} 
+		</if>
+		<if test="condition.explainCode != null and condition.explainCode != ''">
+			AND EXPLAIN_CODE =	#{condition.explainCode} 
+		</if>
+		<if test="condition.explainType != null and condition.explainType != ''">
+			AND EXPLAIN_TYPE =	#{condition.explainType} 
+		</if>
+		<if test="condition.parentUuid != null and condition.parentUuid != ''">
+			AND PARENT_UUID =	#{condition.parentUuid} 
+		</if>
+		<if test="condition.personId != null and condition.personId != ''">
+			AND PERSON_ID =	#{condition.personId} 
+		</if>
+		
+		<if test="condition.createdt != null and condition.createdt != ''">
+			AND CREATEDT =	#{condition.createdt} 
+		</if>
+		<if test="condition.status != null and condition.status != ''">
+			AND STATUS =	#{condition.status} 
+		</if>
+		<if test="condition.remark != null and condition.remark != ''">
+			AND REMARK =	#{condition.remark} 
+		</if>
+	</update>
+	
+	<update id="update" parameterType="com.kool.pacs.bean.PcOpExplainBean">
+		UPDATE PC_OP_EXPLAIN
+		<set>
+			<if test="isInitExplainId">
+				<choose>
+					<when test="explainId != null">
+						EXPLAIN_ID = #{explainId},
+					</when>
+					<otherwise>
+						EXPLAIN_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitExplainTitle">
+				<choose>
+					<when test="explainTitle != null">
+						EXPLAIN_TITLE = #{explainTitle},
+					</when>
+					<otherwise>
+						EXPLAIN_TITLE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitExplainContent">
+				<choose>
+					<when test="explainContent != null">
+						EXPLAIN_CONTENT = #{explainContent},
+					</when>
+					<otherwise>
+						EXPLAIN_CONTENT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitExplainCode">
+				<choose>
+					<when test="explainCode != null">
+						EXPLAIN_CODE = #{explainCode},
+					</when>
+					<otherwise>
+						EXPLAIN_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitExplainType">
+				<choose>
+					<when test="explainType != null">
+						EXPLAIN_TYPE = #{explainType},
+					</when>
+					<otherwise>
+						EXPLAIN_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitParentUuid">
+				<choose>
+					<when test="parentUuid != null">
+						PARENT_UUID = #{parentUuid},
+					</when>
+					<otherwise>
+						PARENT_UUID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitPersonId">
+				<choose>
+					<when test="personId != null">
+						PERSON_ID = #{personId},
+					</when>
+					<otherwise>
+						PERSON_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitOrdercode">
+				<choose>
+					<when test="ordercode != null">
+						ORDERCODE = #{ordercode},
+					</when>
+					<otherwise>
+						ORDERCODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitCreatedt">
+				<choose>
+					<when test="createdt != null">
+						CREATEDT = #{createdt},
+					</when>
+					<otherwise>
+						CREATEDT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitStatus">
+				<choose>
+					<when test="status != null">
+						STATUS = #{status},
+					</when>
+					<otherwise>
+						STATUS = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitRemark">
+				<choose>
+					<when test="remark != null">
+						REMARK = #{remark},
+					</when>
+					<otherwise>
+						REMARK = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 
+		EXPLAIN_ID = #{explainId}
+	</update>	
+	
+	<select id="selectPage" resultMap="BaseResultMap">
+		SELECT 
+		<include refid="Base_Column_List" />
+		FROM
+		PC_OP_EXPLAIN WHERE 1=1
+		<if test="pcOpExplain!=null">
+			<if test="pcOpExplain.explainId != null and pcOpExplain.explainId != ''">
+				AND EXPLAIN_ID = #{pcOpExplain.explainId}
+			</if>
+			<if test="pcOpExplain.explainTitle != null and pcOpExplain.explainTitle != ''">
+				AND EXPLAIN_TITLE = #{pcOpExplain.explainTitle}
+			</if>
+			<if test="pcOpExplain.explainContent != null and pcOpExplain.explainContent != ''">
+				AND EXPLAIN_CONTENT = #{pcOpExplain.explainContent}
+			</if>
+			<if test="pcOpExplain.explainCode != null and pcOpExplain.explainCode != ''">
+				AND EXPLAIN_CODE = #{pcOpExplain.explainCode}
+			</if>
+			<if test="pcOpExplain.explainType != null and pcOpExplain.explainType != ''">
+				AND EXPLAIN_TYPE = #{pcOpExplain.explainType}
+			</if>
+			<if test="pcOpExplain.parentUuid != null and pcOpExplain.parentUuid != ''">
+				AND PARENT_UUID = #{pcOpExplain.parentUuid}
+			</if>
+			<if test="pcOpExplain.personId != null and pcOpExplain.personId != ''">
+				AND PERSON_ID = #{pcOpExplain.personId}
+			</if>
+			
+			<if test="pcOpExplain.createdt != null and pcOpExplain.createdt != ''">
+				AND CREATEDT = #{pcOpExplain.createdt}
+			</if>
+			<if test="pcOpExplain.status != null and pcOpExplain.status != ''">
+				AND STATUS = #{pcOpExplain.status}
+			</if>
+			<if test="pcOpExplain.remark != null and pcOpExplain.remark != ''">
+				AND REMARK = #{pcOpExplain.remark}
+			</if>
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+		LIMIT #{offset},#{pageSize}
+	</select>
+	
+	<select id="selectTotal" parameterType="com.kool.pacs.bean.PcOpExplainBean" resultType="Integer">
+		SELECT COUNT(*) TOTALRECORD FROM PC_OP_EXPLAIN
+		WHERE 1=1
+		<if test="_parameter!=null">
+			<if test="explainId != null and explainId != ''">
+				AND EXPLAIN_ID = #{explainId}
+			</if>
+			<if test="explainTitle != null and explainTitle != ''">
+				AND EXPLAIN_TITLE = #{explainTitle}
+			</if>
+			<if test="explainContent != null and explainContent != ''">
+				AND EXPLAIN_CONTENT = #{explainContent}
+			</if>
+			<if test="explainCode != null and explainCode != ''">
+				AND EXPLAIN_CODE = #{explainCode}
+			</if>
+			<if test="explainType != null and explainType != ''">
+				AND EXPLAIN_TYPE = #{explainType}
+			</if>
+			<if test="parentUuid != null and parentUuid != ''">
+				AND PARENT_UUID = #{parentUuid}
+			</if>
+			<if test="personId != null and personId != ''">
+				AND PERSON_ID = #{personId}
+			</if>
+			
+			<if test="createdt != null and createdt != ''">
+				AND CREATEDT = #{createdt}
+			</if>
+			<if test="status != null and status != ''">
+				AND STATUS = #{status}
+			</if>
+			<if test="remark != null and remark != ''">
+				AND REMARK = #{remark}
+			</if>
+		</if>
+	</select>
+	
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO PC_OP_EXPLAIN(
+		<include refid="Base_Column_List" />
+		) VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			#{item.explainId},		
+			#{item.explainTitle},		
+			#{item.explainContent},		
+			#{item.explainCode},		
+			#{item.explainType},		
+			#{item.parentUuid},		
+			#{item.personId},		
+			#{item.ordercode},		
+			#{item.createdt},		
+			#{item.status},		
+			#{item.remark},		
+		</trim>
+		</foreach>
+	</insert>
+
+	<select id="selectBySql" parameterType="java.lang.String"
+		resultMap="hashMap">
+		${_parameter}
+	</select>
+
+	<select id="selectTotalBySql" parameterType="java.lang.String"
+		resultType="Integer">
+		${_parameter}
+	</select>
+</mapper>  

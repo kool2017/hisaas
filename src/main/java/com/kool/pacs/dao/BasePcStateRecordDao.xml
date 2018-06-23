@@ -1,0 +1,550 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.pacs.dao.BasePcStateRecordDao">
+	<resultMap id="BaseResultMap" type="com.kool.pacs.bean.PcStateRecordBean">
+		<id column="MARK_ID" property="markId" />
+		<result column="FORM_ID" property="formId" />
+		<result column="FORM_TYPE" property="formType" />
+		<result column="PERSON_ID" property="personId" />
+		<result column="PERSON_TYPE" property="personType" />
+		<result column="OPER_CODE" property="operCode" />
+		<result column="OPER_DESC" property="operDesc" />
+		<result column="OPER_RESULT" property="operResult" />
+		<result column="OPER_IP" property="operIp" />
+		<result column="CREATEDT" property="createdt" />
+	</resultMap>
+	<resultMap id="hashMap" type="java.util.HashMap">
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			MARK_ID, 			
+			FORM_ID, 			
+			FORM_TYPE, 			
+			PERSON_ID, 			
+			PERSON_TYPE, 			
+			OPER_CODE, 			
+			OPER_DESC, 			
+			OPER_RESULT, 			
+			OPER_IP, 			
+			CREATEDT			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		MARK_ID
+	</sql>
+
+	<select id="select" parameterType="com.kool.pacs.bean.PcStateRecordBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM PC_STATE_RECORD WHERE 1=1 
+		<if test="markId != null and markId != ''">
+			AND MARK_ID = #{markId}
+		</if>
+		<if test="formId != null and formId != ''">
+			AND FORM_ID = #{formId}
+		</if>
+		<if test="formType != null and formType != ''">
+			AND FORM_TYPE = #{formType}
+		</if>
+		<if test="personId != null and personId != ''">
+			AND PERSON_ID = #{personId}
+		</if>
+		<if test="personType != null and personType != ''">
+			AND PERSON_TYPE = #{personType}
+		</if>
+		<if test="operCode != null and operCode != ''">
+			AND OPER_CODE = #{operCode}
+		</if>
+		<if test="operDesc != null and operDesc != ''">
+			AND OPER_DESC = #{operDesc}
+		</if>
+		<if test="operResult != null and operResult != ''">
+			AND OPER_RESULT = #{operResult}
+		</if>
+		<if test="operIp != null and operIp != ''">
+			AND OPER_IP = #{operIp}
+		</if>
+		<if test="createdt != null and createdt != ''">
+			AND CREATEDT = #{createdt}
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<select id="selectByPK" parameterType="com.kool.pacs.bean.PcStateRecordBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM PC_STATE_RECORD
+		WHERE 
+		MARK_ID = #{markId}
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<delete id="delete" parameterType="com.kool.pacs.bean.PcStateRecordBean">
+		DELETE FROM PC_STATE_RECORD
+		WHERE
+		MARK_ID = #{markId}
+	</delete>
+	
+	<delete id="deletes" parameterType="com.kool.pacs.bean.PcStateRecordBean">
+		DELETE FROM PC_STATE_RECORD
+		WHERE 1=1 
+		<if test="markId != null and markId != ''">
+			AND MARK_ID = #{markId}
+		</if>
+		<if test="formId != null and formId != ''">
+			AND FORM_ID = #{formId}
+		</if>
+		<if test="formType != null and formType != ''">
+			AND FORM_TYPE = #{formType}
+		</if>
+		<if test="personId != null and personId != ''">
+			AND PERSON_ID = #{personId}
+		</if>
+		<if test="personType != null and personType != ''">
+			AND PERSON_TYPE = #{personType}
+		</if>
+		<if test="operCode != null and operCode != ''">
+			AND OPER_CODE = #{operCode}
+		</if>
+		<if test="operDesc != null and operDesc != ''">
+			AND OPER_DESC = #{operDesc}
+		</if>
+		<if test="operResult != null and operResult != ''">
+			AND OPER_RESULT = #{operResult}
+		</if>
+		<if test="operIp != null and operIp != ''">
+			AND OPER_IP = #{operIp}
+		</if>
+		<if test="createdt != null and createdt != ''">
+			AND CREATEDT = #{createdt}
+		</if>
+	</delete>
+	
+	<insert id="insert" parameterType="com.kool.pacs.bean.PcStateRecordBean">
+		INSERT INTO PC_STATE_RECORD
+		<trim prefix="(" suffix=")" suffixOverrides=",">		
+			<if test="markId != null">
+				MARK_ID,
+			</if>		
+			<if test="formId != null">
+				FORM_ID,
+			</if>		
+			<if test="formType != null">
+				FORM_TYPE,
+			</if>		
+			<if test="personId != null">
+				PERSON_ID,
+			</if>		
+			<if test="personType != null">
+				PERSON_TYPE,
+			</if>		
+			<if test="operCode != null">
+				OPER_CODE,
+			</if>		
+			<if test="operDesc != null">
+				OPER_DESC,
+			</if>		
+			<if test="operResult != null">
+				OPER_RESULT,
+			</if>		
+			<if test="operIp != null">
+				OPER_IP,
+			</if>		
+			<if test="createdt != null">
+				CREATEDT,
+			</if>		
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="markId != null">
+				#{markId},
+			</if>	
+			<if test="formId != null">
+				#{formId},
+			</if>	
+			<if test="formType != null">
+				#{formType},
+			</if>	
+			<if test="personId != null">
+				#{personId},
+			</if>	
+			<if test="personType != null">
+				#{personType},
+			</if>	
+			<if test="operCode != null">
+				#{operCode},
+			</if>	
+			<if test="operDesc != null">
+				#{operDesc},
+			</if>	
+			<if test="operResult != null">
+				#{operResult},
+			</if>	
+			<if test="operIp != null">
+				#{operIp},
+			</if>	
+			<if test="createdt != null">
+				#{createdt},
+			</if>	
+		</trim>
+	</insert>
+	
+	<update id="updates">
+		UPDATE PC_STATE_RECORD
+		<set>
+			<if test="value.isInitMarkId">
+				<choose>
+					<when test="value.markId != null">
+						MARK_ID = #{value.markId},
+					</when>
+					<otherwise>
+						MARK_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitFormId">
+				<choose>
+					<when test="value.formId != null">
+						FORM_ID = #{value.formId},
+					</when>
+					<otherwise>
+						FORM_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitFormType">
+				<choose>
+					<when test="value.formType != null">
+						FORM_TYPE = #{value.formType},
+					</when>
+					<otherwise>
+						FORM_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitPersonId">
+				<choose>
+					<when test="value.personId != null">
+						PERSON_ID = #{value.personId},
+					</when>
+					<otherwise>
+						PERSON_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitPersonType">
+				<choose>
+					<when test="value.personType != null">
+						PERSON_TYPE = #{value.personType},
+					</when>
+					<otherwise>
+						PERSON_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitOperCode">
+				<choose>
+					<when test="value.operCode != null">
+						OPER_CODE = #{value.operCode},
+					</when>
+					<otherwise>
+						OPER_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitOperDesc">
+				<choose>
+					<when test="value.operDesc != null">
+						OPER_DESC = #{value.operDesc},
+					</when>
+					<otherwise>
+						OPER_DESC = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitOperResult">
+				<choose>
+					<when test="value.operResult != null">
+						OPER_RESULT = #{value.operResult},
+					</when>
+					<otherwise>
+						OPER_RESULT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitOperIp">
+				<choose>
+					<when test="value.operIp != null">
+						OPER_IP = #{value.operIp},
+					</when>
+					<otherwise>
+						OPER_IP = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitCreatedt">
+				<choose>
+					<when test="value.createdt != null">
+						CREATEDT = #{value.createdt},
+					</when>
+					<otherwise>
+						CREATEDT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 1=1 
+		<if test="condition.markId != null and condition.markId != ''">
+			AND MARK_ID =	#{condition.markId} 
+		</if>
+		<if test="condition.formId != null and condition.formId != ''">
+			AND FORM_ID =	#{condition.formId} 
+		</if>
+		<if test="condition.formType != null and condition.formType != ''">
+			AND FORM_TYPE =	#{condition.formType} 
+		</if>
+		<if test="condition.personId != null and condition.personId != ''">
+			AND PERSON_ID =	#{condition.personId} 
+		</if>
+		<if test="condition.personType != null and condition.personType != ''">
+			AND PERSON_TYPE =	#{condition.personType} 
+		</if>
+		<if test="condition.operCode != null and condition.operCode != ''">
+			AND OPER_CODE =	#{condition.operCode} 
+		</if>
+		<if test="condition.operDesc != null and condition.operDesc != ''">
+			AND OPER_DESC =	#{condition.operDesc} 
+		</if>
+		<if test="condition.operResult != null and condition.operResult != ''">
+			AND OPER_RESULT =	#{condition.operResult} 
+		</if>
+		<if test="condition.operIp != null and condition.operIp != ''">
+			AND OPER_IP =	#{condition.operIp} 
+		</if>
+		<if test="condition.createdt != null and condition.createdt != ''">
+			AND CREATEDT =	#{condition.createdt} 
+		</if>
+	</update>
+	
+	<update id="update" parameterType="com.kool.pacs.bean.PcStateRecordBean">
+		UPDATE PC_STATE_RECORD
+		<set>
+			<if test="isInitMarkId">
+				<choose>
+					<when test="markId != null">
+						MARK_ID = #{markId},
+					</when>
+					<otherwise>
+						MARK_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitFormId">
+				<choose>
+					<when test="formId != null">
+						FORM_ID = #{formId},
+					</when>
+					<otherwise>
+						FORM_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitFormType">
+				<choose>
+					<when test="formType != null">
+						FORM_TYPE = #{formType},
+					</when>
+					<otherwise>
+						FORM_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitPersonId">
+				<choose>
+					<when test="personId != null">
+						PERSON_ID = #{personId},
+					</when>
+					<otherwise>
+						PERSON_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitPersonType">
+				<choose>
+					<when test="personType != null">
+						PERSON_TYPE = #{personType},
+					</when>
+					<otherwise>
+						PERSON_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitOperCode">
+				<choose>
+					<when test="operCode != null">
+						OPER_CODE = #{operCode},
+					</when>
+					<otherwise>
+						OPER_CODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitOperDesc">
+				<choose>
+					<when test="operDesc != null">
+						OPER_DESC = #{operDesc},
+					</when>
+					<otherwise>
+						OPER_DESC = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitOperResult">
+				<choose>
+					<when test="operResult != null">
+						OPER_RESULT = #{operResult},
+					</when>
+					<otherwise>
+						OPER_RESULT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitOperIp">
+				<choose>
+					<when test="operIp != null">
+						OPER_IP = #{operIp},
+					</when>
+					<otherwise>
+						OPER_IP = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitCreatedt">
+				<choose>
+					<when test="createdt != null">
+						CREATEDT = #{createdt},
+					</when>
+					<otherwise>
+						CREATEDT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 
+		MARK_ID = #{markId}
+	</update>	
+	
+	<select id="selectPage" resultMap="BaseResultMap">
+		SELECT 
+		<include refid="Base_Column_List" />
+		FROM
+		PC_STATE_RECORD WHERE 1=1
+		<if test="pcStateRecord!=null">
+			<if test="pcStateRecord.markId != null and pcStateRecord.markId != ''">
+				AND MARK_ID = #{pcStateRecord.markId}
+			</if>
+			<if test="pcStateRecord.formId != null and pcStateRecord.formId != ''">
+				AND FORM_ID = #{pcStateRecord.formId}
+			</if>
+			<if test="pcStateRecord.formType != null and pcStateRecord.formType != ''">
+				AND FORM_TYPE = #{pcStateRecord.formType}
+			</if>
+			<if test="pcStateRecord.personId != null and pcStateRecord.personId != ''">
+				AND PERSON_ID = #{pcStateRecord.personId}
+			</if>
+			<if test="pcStateRecord.personType != null and pcStateRecord.personType != ''">
+				AND PERSON_TYPE = #{pcStateRecord.personType}
+			</if>
+			<if test="pcStateRecord.operCode != null and pcStateRecord.operCode != ''">
+				AND OPER_CODE = #{pcStateRecord.operCode}
+			</if>
+			<if test="pcStateRecord.operDesc != null and pcStateRecord.operDesc != ''">
+				AND OPER_DESC = #{pcStateRecord.operDesc}
+			</if>
+			<if test="pcStateRecord.operResult != null and pcStateRecord.operResult != ''">
+				AND OPER_RESULT = #{pcStateRecord.operResult}
+			</if>
+			<if test="pcStateRecord.operIp != null and pcStateRecord.operIp != ''">
+				AND OPER_IP = #{pcStateRecord.operIp}
+			</if>
+			<if test="pcStateRecord.createdt != null and pcStateRecord.createdt != ''">
+				AND CREATEDT = #{pcStateRecord.createdt}
+			</if>
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+		LIMIT #{offset},#{pageSize}
+	</select>
+	
+	<select id="selectTotal" parameterType="com.kool.pacs.bean.PcStateRecordBean" resultType="Integer">
+		SELECT COUNT(*) TOTALRECORD FROM PC_STATE_RECORD
+		WHERE 1=1
+		<if test="_parameter!=null">
+			<if test="markId != null and markId != ''">
+				AND MARK_ID = #{markId}
+			</if>
+			<if test="formId != null and formId != ''">
+				AND FORM_ID = #{formId}
+			</if>
+			<if test="formType != null and formType != ''">
+				AND FORM_TYPE = #{formType}
+			</if>
+			<if test="personId != null and personId != ''">
+				AND PERSON_ID = #{personId}
+			</if>
+			<if test="personType != null and personType != ''">
+				AND PERSON_TYPE = #{personType}
+			</if>
+			<if test="operCode != null and operCode != ''">
+				AND OPER_CODE = #{operCode}
+			</if>
+			<if test="operDesc != null and operDesc != ''">
+				AND OPER_DESC = #{operDesc}
+			</if>
+			<if test="operResult != null and operResult != ''">
+				AND OPER_RESULT = #{operResult}
+			</if>
+			<if test="operIp != null and operIp != ''">
+				AND OPER_IP = #{operIp}
+			</if>
+			<if test="createdt != null and createdt != ''">
+				AND CREATEDT = #{createdt}
+			</if>
+		</if>
+	</select>
+	
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO PC_STATE_RECORD(
+		<include refid="Base_Column_List" />
+		) VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			#{item.markId},		
+			#{item.formId},		
+			#{item.formType},		
+			#{item.personId},		
+			#{item.personType},		
+			#{item.operCode},		
+			#{item.operDesc},		
+			#{item.operResult},		
+			#{item.operIp},		
+			#{item.createdt},		
+		</trim>
+		</foreach>
+	</insert>
+
+	<select id="selectBySql" parameterType="java.lang.String"
+		resultMap="hashMap">
+		${_parameter}
+	</select>
+
+	<select id="selectTotalBySql" parameterType="java.lang.String"
+		resultType="Integer">
+		${_parameter}
+	</select>
+</mapper>  

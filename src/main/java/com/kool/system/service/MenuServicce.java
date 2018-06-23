@@ -40,7 +40,7 @@ public class MenuServicce {
 	 * @throws AppException
 	 */
 	public List<MenuVo> getAllMenu() throws AppException{
-		List<SyMenuBean> listMenu = menuDao.select(new SyMenuBean());
+		List<SyMenuBean> listMenu = menuDao.selectAllAndOrder();
 		
 		List<MenuVo> listMenuVo = new ArrayList<>();
 		for (SyMenuBean menuBean : listMenu) {
@@ -49,7 +49,9 @@ public class MenuServicce {
 			menuVo.setIndex(menuBean.getSmeIndex());
 			menuVo.setTitle(menuBean.getSmeTitle());
 			menuVo.setSubMenus(getSubMenus(menuBean,listMenu));
-			listMenuVo.add(menuVo);
+			if (menuBean.getSmeDeep() == 0) {
+				listMenuVo.add(menuVo);
+			}
 		}
 		return listMenuVo;
 	}
@@ -69,7 +71,7 @@ public class MenuServicce {
 		}
 		List<MenuVo> listSub = null;
 		for (SyMenuBean item : listMenu) {
-			if (menu.getSmeMenuCode()!=null || menu.getSmeMenuCode().equals(item.getSmeFatMenu())) {
+			if (menu.getSmeMenuCode()!=null && menu.getSmeMenuCode().equals(item.getSmeFatMenu())) {
 				if (null == listSub) {
 					listSub = new ArrayList<>();
 				}

@@ -5,10 +5,12 @@ import java.util.Map;
 import com.kool.core.base.BaseBean;
 
 public class SyUserInfoBean extends BaseBean {
-	protected String suiId;
-	protected boolean isInitSuiId;
+	protected String suiUserCid;
+	protected boolean isInitSuiUserCid;
 	protected String suiLoginName;
 	protected boolean isInitSuiLoginName;
+	protected String suiType;
+	protected boolean isInitSuiType;
 	protected String suiPhone;
 	protected boolean isInitSuiPhone;
 	protected String suiMail;
@@ -23,19 +25,29 @@ public class SyUserInfoBean extends BaseBean {
 	protected boolean isInitSuiHashTimes;
 	protected String suiFace;
 	protected boolean isInitSuiFace;
-	protected String suiStatus;
-	protected boolean isInitSuiStatus;
+	protected String suiState;
+	protected boolean isInitSuiState;
 	protected int suiErrorTimes;
 	protected boolean isInitSuiErrorTimes;
 	protected java.sql.Timestamp suiRegisterTime;
 	protected boolean isInitSuiRegisterTime;
+	protected String suiHasKey;
+	protected boolean isInitSuiHasKey;
+	protected String suiKeyUid;
+	protected boolean isInitSuiKeyUid;
+	protected String suiStaffCid;
+	protected boolean isInitSuiStaffCid;
 
-	public boolean getIsInitSuiId() {
-		return this.isInitSuiId;
+	public boolean getIsInitSuiUserCid() {
+		return this.isInitSuiUserCid;
 	}
 
 	public boolean getIsInitSuiLoginName() {
 		return this.isInitSuiLoginName;
+	}
+
+	public boolean getIsInitSuiType() {
+		return this.isInitSuiType;
 	}
 
 	public boolean getIsInitSuiPhone() {
@@ -66,8 +78,8 @@ public class SyUserInfoBean extends BaseBean {
 		return this.isInitSuiFace;
 	}
 
-	public boolean getIsInitSuiStatus() {
-		return this.isInitSuiStatus;
+	public boolean getIsInitSuiState() {
+		return this.isInitSuiState;
 	}
 
 	public boolean getIsInitSuiErrorTimes() {
@@ -78,13 +90,25 @@ public class SyUserInfoBean extends BaseBean {
 		return this.isInitSuiRegisterTime;
 	}
 
-	public String getSuiId() {
-		return suiId;
+	public boolean getIsInitSuiHasKey() {
+		return this.isInitSuiHasKey;
 	}
 
-	public void setSuiId(String suiId) {
-		this.suiId = suiId;
-		this.isInitSuiId = true;
+	public boolean getIsInitSuiKeyUid() {
+		return this.isInitSuiKeyUid;
+	}
+
+	public boolean getIsInitSuiStaffCid() {
+		return this.isInitSuiStaffCid;
+	}
+
+	public String getSuiUserCid() {
+		return suiUserCid;
+	}
+
+	public void setSuiUserCid(String suiUserCid) {
+		this.suiUserCid = suiUserCid;
+		this.isInitSuiUserCid = true;
 	}
 
 	public String getSuiLoginName() {
@@ -94,6 +118,15 @@ public class SyUserInfoBean extends BaseBean {
 	public void setSuiLoginName(String suiLoginName) {
 		this.suiLoginName = suiLoginName;
 		this.isInitSuiLoginName = true;
+	}
+
+	public String getSuiType() {
+		return suiType;
+	}
+
+	public void setSuiType(String suiType) {
+		this.suiType = suiType;
+		this.isInitSuiType = true;
 	}
 
 	public String getSuiPhone() {
@@ -159,13 +192,13 @@ public class SyUserInfoBean extends BaseBean {
 		this.isInitSuiFace = true;
 	}
 
-	public String getSuiStatus() {
-		return suiStatus;
+	public String getSuiState() {
+		return suiState;
 	}
 
-	public void setSuiStatus(String suiStatus) {
-		this.suiStatus = suiStatus;
-		this.isInitSuiStatus = true;
+	public void setSuiState(String suiState) {
+		this.suiState = suiState;
+		this.isInitSuiState = true;
 	}
 
 	public int getSuiErrorTimes() {
@@ -186,13 +219,43 @@ public class SyUserInfoBean extends BaseBean {
 		this.isInitSuiRegisterTime = true;
 	}
 
+	public String getSuiHasKey() {
+		return suiHasKey;
+	}
+
+	public void setSuiHasKey(String suiHasKey) {
+		this.suiHasKey = suiHasKey;
+		this.isInitSuiHasKey = true;
+	}
+
+	public String getSuiKeyUid() {
+		return suiKeyUid;
+	}
+
+	public void setSuiKeyUid(String suiKeyUid) {
+		this.suiKeyUid = suiKeyUid;
+		this.isInitSuiKeyUid = true;
+	}
+
+	public String getSuiStaffCid() {
+		return suiStaffCid;
+	}
+
+	public void setSuiStaffCid(String suiStaffCid) {
+		this.suiStaffCid = suiStaffCid;
+		this.isInitSuiStaffCid = true;
+	}
+
 	public Map<String, String> toMap() {
 		Map<String, String> map = new HashMap<String, String>();
-		if (isInitSuiId) {
-			map.put("suiId", formatString(suiId));
+		if (isInitSuiUserCid) {
+			map.put("suiUserCid", formatString(suiUserCid));
 		}
 		if (isInitSuiLoginName) {
 			map.put("suiLoginName", formatString(suiLoginName));
+		}
+		if (isInitSuiType) {
+			map.put("suiType", formatString(suiType));
 		}
 		if (isInitSuiPhone) {
 			map.put("suiPhone", formatString(suiPhone));
@@ -215,14 +278,23 @@ public class SyUserInfoBean extends BaseBean {
 		if (isInitSuiFace) {
 			map.put("suiFace", formatString(suiFace));
 		}
-		if (isInitSuiStatus) {
-			map.put("suiStatus", formatString(suiStatus));
+		if (isInitSuiState) {
+			map.put("suiState", formatString(suiState));
 		}
 		if (isInitSuiErrorTimes) {
 			map.put("suiErrorTimes", formatString(suiErrorTimes));
 		}
 		if (isInitSuiRegisterTime) {
 			map.put("suiRegisterTime", formatString(suiRegisterTime));
+		}
+		if (isInitSuiHasKey) {
+			map.put("suiHasKey", formatString(suiHasKey));
+		}
+		if (isInitSuiKeyUid) {
+			map.put("suiKeyUid", formatString(suiKeyUid));
+		}
+		if (isInitSuiStaffCid) {
+			map.put("suiStaffCid", formatString(suiStaffCid));
 		}
 
 		return map;

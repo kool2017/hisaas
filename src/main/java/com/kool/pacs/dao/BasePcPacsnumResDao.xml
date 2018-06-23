@@ -1,0 +1,804 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.pacs.dao.BasePcPacsnumResDao">
+	<resultMap id="BaseResultMap" type="com.kool.pacs.bean.PcPacsnumResBean">
+		<id column="NUMBER_ID" property="numberId" />
+		<result column="APPT_ID" property="apptId" />
+		<result column="DEVICE_ID" property="deviceId" />
+		<result column="SCHEDU_ID" property="scheduId" />
+		<result column="SCHEDU_DT" property="scheduDt" />
+		<result column="SCHEDU_AMPM" property="scheduAmpm" />
+		<result column="SCHEDU_SECTION" property="scheduSection" />
+		<result column="SCHEDU_POINT" property="scheduPoint" />
+		<result column="NUMBER_TYPE" property="numberType" />
+		<result column="LOCKTYPE" property="locktype" />
+		<result column="LOCKSOURCE" property="locksource" />
+		<result column="UNLOCKDEPTID" property="unlockdeptid" />
+		<result column="LOCK_ID" property="lockId" />
+		<result column="ADD_ID" property="addId" />
+		<result column="CREATEDT" property="createdt" />
+		<result column="ORDERCODE" property="ordercode" />
+	</resultMap>
+	<resultMap id="hashMap" type="java.util.HashMap">
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			NUMBER_ID, 			
+			APPT_ID, 			
+			DEVICE_ID, 			
+			SCHEDU_ID, 			
+			SCHEDU_DT, 			
+			SCHEDU_AMPM, 			
+			SCHEDU_SECTION, 			
+			SCHEDU_POINT, 			
+			NUMBER_TYPE, 			
+			LOCKTYPE, 			
+			LOCKSOURCE, 			
+			UNLOCKDEPTID, 			
+			LOCK_ID, 			
+			ADD_ID, 			
+			CREATEDT, 			
+			ORDERCODE			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		NUMBER_ID
+	</sql>
+
+	<select id="select" parameterType="com.kool.pacs.bean.PcPacsnumResBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM PC_PACSNUM_RES WHERE 1=1 
+		<if test="numberId != null and numberId != ''">
+			AND NUMBER_ID = #{numberId}
+		</if>
+		<if test="apptId != null and apptId != ''">
+			AND APPT_ID = #{apptId}
+		</if>
+		<if test="deviceId != null and deviceId != ''">
+			AND DEVICE_ID = #{deviceId}
+		</if>
+		<if test="scheduId != null and scheduId != ''">
+			AND SCHEDU_ID = #{scheduId}
+		</if>
+		<if test="scheduDt != null and scheduDt != ''">
+			AND SCHEDU_DT = #{scheduDt}
+		</if>
+		<if test="scheduAmpm != null and scheduAmpm != ''">
+			AND SCHEDU_AMPM = #{scheduAmpm}
+		</if>
+		<if test="scheduSection != null and scheduSection != ''">
+			AND SCHEDU_SECTION = #{scheduSection}
+		</if>
+		<if test="scheduPoint != null and scheduPoint != ''">
+			AND SCHEDU_POINT = #{scheduPoint}
+		</if>
+		<if test="numberType != null and numberType != ''">
+			AND NUMBER_TYPE = #{numberType}
+		</if>
+		<if test="locktype != null and locktype != ''">
+			AND LOCKTYPE = #{locktype}
+		</if>
+		<if test="locksource != null and locksource != ''">
+			AND LOCKSOURCE = #{locksource}
+		</if>
+		<if test="unlockdeptid != null and unlockdeptid != ''">
+			AND UNLOCKDEPTID = #{unlockdeptid}
+		</if>
+		<if test="lockId != null and lockId != ''">
+			AND LOCK_ID = #{lockId}
+		</if>
+		<if test="addId != null and addId != ''">
+			AND ADD_ID = #{addId}
+		</if>
+		<if test="createdt != null and createdt != ''">
+			AND CREATEDT = #{createdt}
+		</if>
+		
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<select id="selectByPK" parameterType="com.kool.pacs.bean.PcPacsnumResBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM PC_PACSNUM_RES
+		WHERE 
+		NUMBER_ID = #{numberId}
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<delete id="delete" parameterType="com.kool.pacs.bean.PcPacsnumResBean">
+		DELETE FROM PC_PACSNUM_RES
+		WHERE
+		NUMBER_ID = #{numberId}
+	</delete>
+	
+	<delete id="deletes" parameterType="com.kool.pacs.bean.PcPacsnumResBean">
+		DELETE FROM PC_PACSNUM_RES
+		WHERE 1=1 
+		<if test="numberId != null and numberId != ''">
+			AND NUMBER_ID = #{numberId}
+		</if>
+		<if test="apptId != null and apptId != ''">
+			AND APPT_ID = #{apptId}
+		</if>
+		<if test="deviceId != null and deviceId != ''">
+			AND DEVICE_ID = #{deviceId}
+		</if>
+		<if test="scheduId != null and scheduId != ''">
+			AND SCHEDU_ID = #{scheduId}
+		</if>
+		<if test="scheduDt != null and scheduDt != ''">
+			AND SCHEDU_DT = #{scheduDt}
+		</if>
+		<if test="scheduAmpm != null and scheduAmpm != ''">
+			AND SCHEDU_AMPM = #{scheduAmpm}
+		</if>
+		<if test="scheduSection != null and scheduSection != ''">
+			AND SCHEDU_SECTION = #{scheduSection}
+		</if>
+		<if test="scheduPoint != null and scheduPoint != ''">
+			AND SCHEDU_POINT = #{scheduPoint}
+		</if>
+		<if test="numberType != null and numberType != ''">
+			AND NUMBER_TYPE = #{numberType}
+		</if>
+		<if test="locktype != null and locktype != ''">
+			AND LOCKTYPE = #{locktype}
+		</if>
+		<if test="locksource != null and locksource != ''">
+			AND LOCKSOURCE = #{locksource}
+		</if>
+		<if test="unlockdeptid != null and unlockdeptid != ''">
+			AND UNLOCKDEPTID = #{unlockdeptid}
+		</if>
+		<if test="lockId != null and lockId != ''">
+			AND LOCK_ID = #{lockId}
+		</if>
+		<if test="addId != null and addId != ''">
+			AND ADD_ID = #{addId}
+		</if>
+		<if test="createdt != null and createdt != ''">
+			AND CREATEDT = #{createdt}
+		</if>
+		
+	</delete>
+	
+	<insert id="insert" parameterType="com.kool.pacs.bean.PcPacsnumResBean">
+		INSERT INTO PC_PACSNUM_RES
+		<trim prefix="(" suffix=")" suffixOverrides=",">		
+			<if test="numberId != null">
+				NUMBER_ID,
+			</if>		
+			<if test="apptId != null">
+				APPT_ID,
+			</if>		
+			<if test="deviceId != null">
+				DEVICE_ID,
+			</if>		
+			<if test="scheduId != null">
+				SCHEDU_ID,
+			</if>		
+			<if test="scheduDt != null">
+				SCHEDU_DT,
+			</if>		
+			<if test="scheduAmpm != null">
+				SCHEDU_AMPM,
+			</if>		
+			<if test="scheduSection != null">
+				SCHEDU_SECTION,
+			</if>		
+			<if test="scheduPoint != null">
+				SCHEDU_POINT,
+			</if>		
+			<if test="numberType != null">
+				NUMBER_TYPE,
+			</if>		
+			<if test="locktype != null">
+				LOCKTYPE,
+			</if>		
+			<if test="locksource != null">
+				LOCKSOURCE,
+			</if>		
+			<if test="unlockdeptid != null">
+				UNLOCKDEPTID,
+			</if>		
+			<if test="lockId != null">
+				LOCK_ID,
+			</if>		
+			<if test="addId != null">
+				ADD_ID,
+			</if>		
+			<if test="createdt != null">
+				CREATEDT,
+			</if>		
+			<if test="ordercode != null">
+				ORDERCODE,
+			</if>		
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="numberId != null">
+				#{numberId},
+			</if>	
+			<if test="apptId != null">
+				#{apptId},
+			</if>	
+			<if test="deviceId != null">
+				#{deviceId},
+			</if>	
+			<if test="scheduId != null">
+				#{scheduId},
+			</if>	
+			<if test="scheduDt != null">
+				#{scheduDt},
+			</if>	
+			<if test="scheduAmpm != null">
+				#{scheduAmpm},
+			</if>	
+			<if test="scheduSection != null">
+				#{scheduSection},
+			</if>	
+			<if test="scheduPoint != null">
+				#{scheduPoint},
+			</if>	
+			<if test="numberType != null">
+				#{numberType},
+			</if>	
+			<if test="locktype != null">
+				#{locktype},
+			</if>	
+			<if test="locksource != null">
+				#{locksource},
+			</if>	
+			<if test="unlockdeptid != null">
+				#{unlockdeptid},
+			</if>	
+			<if test="lockId != null">
+				#{lockId},
+			</if>	
+			<if test="addId != null">
+				#{addId},
+			</if>	
+			<if test="createdt != null">
+				#{createdt},
+			</if>	
+			<if test="ordercode != null">
+				#{ordercode},
+			</if>	
+		</trim>
+	</insert>
+	
+	<update id="updates">
+		UPDATE PC_PACSNUM_RES
+		<set>
+			<if test="value.isInitNumberId">
+				<choose>
+					<when test="value.numberId != null">
+						NUMBER_ID = #{value.numberId},
+					</when>
+					<otherwise>
+						NUMBER_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitApptId">
+				<choose>
+					<when test="value.apptId != null">
+						APPT_ID = #{value.apptId},
+					</when>
+					<otherwise>
+						APPT_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitDeviceId">
+				<choose>
+					<when test="value.deviceId != null">
+						DEVICE_ID = #{value.deviceId},
+					</when>
+					<otherwise>
+						DEVICE_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitScheduId">
+				<choose>
+					<when test="value.scheduId != null">
+						SCHEDU_ID = #{value.scheduId},
+					</when>
+					<otherwise>
+						SCHEDU_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitScheduDt">
+				<choose>
+					<when test="value.scheduDt != null">
+						SCHEDU_DT = #{value.scheduDt},
+					</when>
+					<otherwise>
+						SCHEDU_DT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitScheduAmpm">
+				<choose>
+					<when test="value.scheduAmpm != null">
+						SCHEDU_AMPM = #{value.scheduAmpm},
+					</when>
+					<otherwise>
+						SCHEDU_AMPM = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitScheduSection">
+				<choose>
+					<when test="value.scheduSection != null">
+						SCHEDU_SECTION = #{value.scheduSection},
+					</when>
+					<otherwise>
+						SCHEDU_SECTION = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitScheduPoint">
+				<choose>
+					<when test="value.scheduPoint != null">
+						SCHEDU_POINT = #{value.scheduPoint},
+					</when>
+					<otherwise>
+						SCHEDU_POINT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitNumberType">
+				<choose>
+					<when test="value.numberType != null">
+						NUMBER_TYPE = #{value.numberType},
+					</when>
+					<otherwise>
+						NUMBER_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitLocktype">
+				<choose>
+					<when test="value.locktype != null">
+						LOCKTYPE = #{value.locktype},
+					</when>
+					<otherwise>
+						LOCKTYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitLocksource">
+				<choose>
+					<when test="value.locksource != null">
+						LOCKSOURCE = #{value.locksource},
+					</when>
+					<otherwise>
+						LOCKSOURCE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitUnlockdeptid">
+				<choose>
+					<when test="value.unlockdeptid != null">
+						UNLOCKDEPTID = #{value.unlockdeptid},
+					</when>
+					<otherwise>
+						UNLOCKDEPTID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitLockId">
+				<choose>
+					<when test="value.lockId != null">
+						LOCK_ID = #{value.lockId},
+					</when>
+					<otherwise>
+						LOCK_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitAddId">
+				<choose>
+					<when test="value.addId != null">
+						ADD_ID = #{value.addId},
+					</when>
+					<otherwise>
+						ADD_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitCreatedt">
+				<choose>
+					<when test="value.createdt != null">
+						CREATEDT = #{value.createdt},
+					</when>
+					<otherwise>
+						CREATEDT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitOrdercode">
+				<choose>
+					<when test="value.ordercode != null">
+						ORDERCODE = #{value.ordercode},
+					</when>
+					<otherwise>
+						ORDERCODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 1=1 
+		<if test="condition.numberId != null and condition.numberId != ''">
+			AND NUMBER_ID =	#{condition.numberId} 
+		</if>
+		<if test="condition.apptId != null and condition.apptId != ''">
+			AND APPT_ID =	#{condition.apptId} 
+		</if>
+		<if test="condition.deviceId != null and condition.deviceId != ''">
+			AND DEVICE_ID =	#{condition.deviceId} 
+		</if>
+		<if test="condition.scheduId != null and condition.scheduId != ''">
+			AND SCHEDU_ID =	#{condition.scheduId} 
+		</if>
+		<if test="condition.scheduDt != null and condition.scheduDt != ''">
+			AND SCHEDU_DT =	#{condition.scheduDt} 
+		</if>
+		<if test="condition.scheduAmpm != null and condition.scheduAmpm != ''">
+			AND SCHEDU_AMPM =	#{condition.scheduAmpm} 
+		</if>
+		<if test="condition.scheduSection != null and condition.scheduSection != ''">
+			AND SCHEDU_SECTION =	#{condition.scheduSection} 
+		</if>
+		<if test="condition.scheduPoint != null and condition.scheduPoint != ''">
+			AND SCHEDU_POINT =	#{condition.scheduPoint} 
+		</if>
+		<if test="condition.numberType != null and condition.numberType != ''">
+			AND NUMBER_TYPE =	#{condition.numberType} 
+		</if>
+		<if test="condition.locktype != null and condition.locktype != ''">
+			AND LOCKTYPE =	#{condition.locktype} 
+		</if>
+		<if test="condition.locksource != null and condition.locksource != ''">
+			AND LOCKSOURCE =	#{condition.locksource} 
+		</if>
+		<if test="condition.unlockdeptid != null and condition.unlockdeptid != ''">
+			AND UNLOCKDEPTID =	#{condition.unlockdeptid} 
+		</if>
+		<if test="condition.lockId != null and condition.lockId != ''">
+			AND LOCK_ID =	#{condition.lockId} 
+		</if>
+		<if test="condition.addId != null and condition.addId != ''">
+			AND ADD_ID =	#{condition.addId} 
+		</if>
+		<if test="condition.createdt != null and condition.createdt != ''">
+			AND CREATEDT =	#{condition.createdt} 
+		</if>
+		
+	</update>
+	
+	<update id="update" parameterType="com.kool.pacs.bean.PcPacsnumResBean">
+		UPDATE PC_PACSNUM_RES
+		<set>
+			<if test="isInitNumberId">
+				<choose>
+					<when test="numberId != null">
+						NUMBER_ID = #{numberId},
+					</when>
+					<otherwise>
+						NUMBER_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitApptId">
+				<choose>
+					<when test="apptId != null">
+						APPT_ID = #{apptId},
+					</when>
+					<otherwise>
+						APPT_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitDeviceId">
+				<choose>
+					<when test="deviceId != null">
+						DEVICE_ID = #{deviceId},
+					</when>
+					<otherwise>
+						DEVICE_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitScheduId">
+				<choose>
+					<when test="scheduId != null">
+						SCHEDU_ID = #{scheduId},
+					</when>
+					<otherwise>
+						SCHEDU_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitScheduDt">
+				<choose>
+					<when test="scheduDt != null">
+						SCHEDU_DT = #{scheduDt},
+					</when>
+					<otherwise>
+						SCHEDU_DT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitScheduAmpm">
+				<choose>
+					<when test="scheduAmpm != null">
+						SCHEDU_AMPM = #{scheduAmpm},
+					</when>
+					<otherwise>
+						SCHEDU_AMPM = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitScheduSection">
+				<choose>
+					<when test="scheduSection != null">
+						SCHEDU_SECTION = #{scheduSection},
+					</when>
+					<otherwise>
+						SCHEDU_SECTION = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitScheduPoint">
+				<choose>
+					<when test="scheduPoint != null">
+						SCHEDU_POINT = #{scheduPoint},
+					</when>
+					<otherwise>
+						SCHEDU_POINT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitNumberType">
+				<choose>
+					<when test="numberType != null">
+						NUMBER_TYPE = #{numberType},
+					</when>
+					<otherwise>
+						NUMBER_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitLocktype">
+				<choose>
+					<when test="locktype != null">
+						LOCKTYPE = #{locktype},
+					</when>
+					<otherwise>
+						LOCKTYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitLocksource">
+				<choose>
+					<when test="locksource != null">
+						LOCKSOURCE = #{locksource},
+					</when>
+					<otherwise>
+						LOCKSOURCE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitUnlockdeptid">
+				<choose>
+					<when test="unlockdeptid != null">
+						UNLOCKDEPTID = #{unlockdeptid},
+					</when>
+					<otherwise>
+						UNLOCKDEPTID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitLockId">
+				<choose>
+					<when test="lockId != null">
+						LOCK_ID = #{lockId},
+					</when>
+					<otherwise>
+						LOCK_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitAddId">
+				<choose>
+					<when test="addId != null">
+						ADD_ID = #{addId},
+					</when>
+					<otherwise>
+						ADD_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitCreatedt">
+				<choose>
+					<when test="createdt != null">
+						CREATEDT = #{createdt},
+					</when>
+					<otherwise>
+						CREATEDT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitOrdercode">
+				<choose>
+					<when test="ordercode != null">
+						ORDERCODE = #{ordercode},
+					</when>
+					<otherwise>
+						ORDERCODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 
+		NUMBER_ID = #{numberId}
+	</update>	
+	
+	<select id="selectPage" resultMap="BaseResultMap">
+		SELECT 
+		<include refid="Base_Column_List" />
+		FROM
+		PC_PACSNUM_RES WHERE 1=1
+		<if test="pcPacsnumRes!=null">
+			<if test="pcPacsnumRes.numberId != null and pcPacsnumRes.numberId != ''">
+				AND NUMBER_ID = #{pcPacsnumRes.numberId}
+			</if>
+			<if test="pcPacsnumRes.apptId != null and pcPacsnumRes.apptId != ''">
+				AND APPT_ID = #{pcPacsnumRes.apptId}
+			</if>
+			<if test="pcPacsnumRes.deviceId != null and pcPacsnumRes.deviceId != ''">
+				AND DEVICE_ID = #{pcPacsnumRes.deviceId}
+			</if>
+			<if test="pcPacsnumRes.scheduId != null and pcPacsnumRes.scheduId != ''">
+				AND SCHEDU_ID = #{pcPacsnumRes.scheduId}
+			</if>
+			<if test="pcPacsnumRes.scheduDt != null and pcPacsnumRes.scheduDt != ''">
+				AND SCHEDU_DT = #{pcPacsnumRes.scheduDt}
+			</if>
+			<if test="pcPacsnumRes.scheduAmpm != null and pcPacsnumRes.scheduAmpm != ''">
+				AND SCHEDU_AMPM = #{pcPacsnumRes.scheduAmpm}
+			</if>
+			<if test="pcPacsnumRes.scheduSection != null and pcPacsnumRes.scheduSection != ''">
+				AND SCHEDU_SECTION = #{pcPacsnumRes.scheduSection}
+			</if>
+			<if test="pcPacsnumRes.scheduPoint != null and pcPacsnumRes.scheduPoint != ''">
+				AND SCHEDU_POINT = #{pcPacsnumRes.scheduPoint}
+			</if>
+			<if test="pcPacsnumRes.numberType != null and pcPacsnumRes.numberType != ''">
+				AND NUMBER_TYPE = #{pcPacsnumRes.numberType}
+			</if>
+			<if test="pcPacsnumRes.locktype != null and pcPacsnumRes.locktype != ''">
+				AND LOCKTYPE = #{pcPacsnumRes.locktype}
+			</if>
+			<if test="pcPacsnumRes.locksource != null and pcPacsnumRes.locksource != ''">
+				AND LOCKSOURCE = #{pcPacsnumRes.locksource}
+			</if>
+			<if test="pcPacsnumRes.unlockdeptid != null and pcPacsnumRes.unlockdeptid != ''">
+				AND UNLOCKDEPTID = #{pcPacsnumRes.unlockdeptid}
+			</if>
+			<if test="pcPacsnumRes.lockId != null and pcPacsnumRes.lockId != ''">
+				AND LOCK_ID = #{pcPacsnumRes.lockId}
+			</if>
+			<if test="pcPacsnumRes.addId != null and pcPacsnumRes.addId != ''">
+				AND ADD_ID = #{pcPacsnumRes.addId}
+			</if>
+			<if test="pcPacsnumRes.createdt != null and pcPacsnumRes.createdt != ''">
+				AND CREATEDT = #{pcPacsnumRes.createdt}
+			</if>
+			
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+		LIMIT #{offset},#{pageSize}
+	</select>
+	
+	<select id="selectTotal" parameterType="com.kool.pacs.bean.PcPacsnumResBean" resultType="Integer">
+		SELECT COUNT(*) TOTALRECORD FROM PC_PACSNUM_RES
+		WHERE 1=1
+		<if test="_parameter!=null">
+			<if test="numberId != null and numberId != ''">
+				AND NUMBER_ID = #{numberId}
+			</if>
+			<if test="apptId != null and apptId != ''">
+				AND APPT_ID = #{apptId}
+			</if>
+			<if test="deviceId != null and deviceId != ''">
+				AND DEVICE_ID = #{deviceId}
+			</if>
+			<if test="scheduId != null and scheduId != ''">
+				AND SCHEDU_ID = #{scheduId}
+			</if>
+			<if test="scheduDt != null and scheduDt != ''">
+				AND SCHEDU_DT = #{scheduDt}
+			</if>
+			<if test="scheduAmpm != null and scheduAmpm != ''">
+				AND SCHEDU_AMPM = #{scheduAmpm}
+			</if>
+			<if test="scheduSection != null and scheduSection != ''">
+				AND SCHEDU_SECTION = #{scheduSection}
+			</if>
+			<if test="scheduPoint != null and scheduPoint != ''">
+				AND SCHEDU_POINT = #{scheduPoint}
+			</if>
+			<if test="numberType != null and numberType != ''">
+				AND NUMBER_TYPE = #{numberType}
+			</if>
+			<if test="locktype != null and locktype != ''">
+				AND LOCKTYPE = #{locktype}
+			</if>
+			<if test="locksource != null and locksource != ''">
+				AND LOCKSOURCE = #{locksource}
+			</if>
+			<if test="unlockdeptid != null and unlockdeptid != ''">
+				AND UNLOCKDEPTID = #{unlockdeptid}
+			</if>
+			<if test="lockId != null and lockId != ''">
+				AND LOCK_ID = #{lockId}
+			</if>
+			<if test="addId != null and addId != ''">
+				AND ADD_ID = #{addId}
+			</if>
+			<if test="createdt != null and createdt != ''">
+				AND CREATEDT = #{createdt}
+			</if>
+			
+		</if>
+	</select>
+	
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO PC_PACSNUM_RES(
+		<include refid="Base_Column_List" />
+		) VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			#{item.numberId},		
+			#{item.apptId},		
+			#{item.deviceId},		
+			#{item.scheduId},		
+			#{item.scheduDt},		
+			#{item.scheduAmpm},		
+			#{item.scheduSection},		
+			#{item.scheduPoint},		
+			#{item.numberType},		
+			#{item.locktype},		
+			#{item.locksource},		
+			#{item.unlockdeptid},		
+			#{item.lockId},		
+			#{item.addId},		
+			#{item.createdt},		
+			#{item.ordercode},		
+		</trim>
+		</foreach>
+	</insert>
+
+	<select id="selectBySql" parameterType="java.lang.String"
+		resultMap="hashMap">
+		${_parameter}
+	</select>
+
+	<select id="selectTotalBySql" parameterType="java.lang.String"
+		resultType="Integer">
+		${_parameter}
+	</select>
+</mapper>  

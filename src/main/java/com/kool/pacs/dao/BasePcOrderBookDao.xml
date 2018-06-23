@@ -1,0 +1,804 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.pacs.dao.BasePcOrderBookDao">
+	<resultMap id="BaseResultMap" type="com.kool.pacs.bean.PcOrderBookBean">
+		<id column="APPT_ID" property="apptId" />
+		<result column="EXAM_ID" property="examId" />
+		<result column="PERSON_ID" property="personId" />
+		<result column="PERSON_TYPE" property="personType" />
+		<result column="ORDERCODE" property="ordercode" />
+		<result column="DEVICE_ID" property="deviceId" />
+		<result column="APPT_DT" property="apptDt" />
+		<result column="APPT_AMPM" property="apptAmpm" />
+		<result column="START_SECTION" property="startSection" />
+		<result column="START_POINT" property="startPoint" />
+		<result column="CREATEDT" property="createdt" />
+		<result column="SIGNDT" property="signdt" />
+		<result column="DEVICE_ID_CHECKED" property="deviceIdChecked" />
+		<result column="CLOSEDT" property="closedt" />
+		<result column="STATUS" property="status" />
+		<result column="REMARK" property="remark" />
+	</resultMap>
+	<resultMap id="hashMap" type="java.util.HashMap">
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			APPT_ID, 			
+			EXAM_ID, 			
+			PERSON_ID, 			
+			PERSON_TYPE, 			
+			ORDERCODE, 			
+			DEVICE_ID, 			
+			APPT_DT, 			
+			APPT_AMPM, 			
+			START_SECTION, 			
+			START_POINT, 			
+			CREATEDT, 			
+			SIGNDT, 			
+			DEVICE_ID_CHECKED, 			
+			CLOSEDT, 			
+			STATUS, 			
+			REMARK			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		APPT_ID
+	</sql>
+
+	<select id="select" parameterType="com.kool.pacs.bean.PcOrderBookBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM PC_ORDER_BOOK WHERE 1=1 
+		<if test="apptId != null and apptId != ''">
+			AND APPT_ID = #{apptId}
+		</if>
+		<if test="examId != null and examId != ''">
+			AND EXAM_ID = #{examId}
+		</if>
+		<if test="personId != null and personId != ''">
+			AND PERSON_ID = #{personId}
+		</if>
+		<if test="personType != null and personType != ''">
+			AND PERSON_TYPE = #{personType}
+		</if>
+		
+		<if test="deviceId != null and deviceId != ''">
+			AND DEVICE_ID = #{deviceId}
+		</if>
+		<if test="apptDt != null and apptDt != ''">
+			AND APPT_DT = #{apptDt}
+		</if>
+		<if test="apptAmpm != null and apptAmpm != ''">
+			AND APPT_AMPM = #{apptAmpm}
+		</if>
+		<if test="startSection != null and startSection != ''">
+			AND START_SECTION = #{startSection}
+		</if>
+		<if test="startPoint != null and startPoint != ''">
+			AND START_POINT = #{startPoint}
+		</if>
+		<if test="createdt != null and createdt != ''">
+			AND CREATEDT = #{createdt}
+		</if>
+		<if test="signdt != null and signdt != ''">
+			AND SIGNDT = #{signdt}
+		</if>
+		<if test="deviceIdChecked != null and deviceIdChecked != ''">
+			AND DEVICE_ID_CHECKED = #{deviceIdChecked}
+		</if>
+		<if test="closedt != null and closedt != ''">
+			AND CLOSEDT = #{closedt}
+		</if>
+		<if test="status != null and status != ''">
+			AND STATUS = #{status}
+		</if>
+		<if test="remark != null and remark != ''">
+			AND REMARK = #{remark}
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<select id="selectByPK" parameterType="com.kool.pacs.bean.PcOrderBookBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM PC_ORDER_BOOK
+		WHERE 
+		APPT_ID = #{apptId}
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<delete id="delete" parameterType="com.kool.pacs.bean.PcOrderBookBean">
+		DELETE FROM PC_ORDER_BOOK
+		WHERE
+		APPT_ID = #{apptId}
+	</delete>
+	
+	<delete id="deletes" parameterType="com.kool.pacs.bean.PcOrderBookBean">
+		DELETE FROM PC_ORDER_BOOK
+		WHERE 1=1 
+		<if test="apptId != null and apptId != ''">
+			AND APPT_ID = #{apptId}
+		</if>
+		<if test="examId != null and examId != ''">
+			AND EXAM_ID = #{examId}
+		</if>
+		<if test="personId != null and personId != ''">
+			AND PERSON_ID = #{personId}
+		</if>
+		<if test="personType != null and personType != ''">
+			AND PERSON_TYPE = #{personType}
+		</if>
+		
+		<if test="deviceId != null and deviceId != ''">
+			AND DEVICE_ID = #{deviceId}
+		</if>
+		<if test="apptDt != null and apptDt != ''">
+			AND APPT_DT = #{apptDt}
+		</if>
+		<if test="apptAmpm != null and apptAmpm != ''">
+			AND APPT_AMPM = #{apptAmpm}
+		</if>
+		<if test="startSection != null and startSection != ''">
+			AND START_SECTION = #{startSection}
+		</if>
+		<if test="startPoint != null and startPoint != ''">
+			AND START_POINT = #{startPoint}
+		</if>
+		<if test="createdt != null and createdt != ''">
+			AND CREATEDT = #{createdt}
+		</if>
+		<if test="signdt != null and signdt != ''">
+			AND SIGNDT = #{signdt}
+		</if>
+		<if test="deviceIdChecked != null and deviceIdChecked != ''">
+			AND DEVICE_ID_CHECKED = #{deviceIdChecked}
+		</if>
+		<if test="closedt != null and closedt != ''">
+			AND CLOSEDT = #{closedt}
+		</if>
+		<if test="status != null and status != ''">
+			AND STATUS = #{status}
+		</if>
+		<if test="remark != null and remark != ''">
+			AND REMARK = #{remark}
+		</if>
+	</delete>
+	
+	<insert id="insert" parameterType="com.kool.pacs.bean.PcOrderBookBean">
+		INSERT INTO PC_ORDER_BOOK
+		<trim prefix="(" suffix=")" suffixOverrides=",">		
+			<if test="apptId != null">
+				APPT_ID,
+			</if>		
+			<if test="examId != null">
+				EXAM_ID,
+			</if>		
+			<if test="personId != null">
+				PERSON_ID,
+			</if>		
+			<if test="personType != null">
+				PERSON_TYPE,
+			</if>		
+			<if test="ordercode != null">
+				ORDERCODE,
+			</if>		
+			<if test="deviceId != null">
+				DEVICE_ID,
+			</if>		
+			<if test="apptDt != null">
+				APPT_DT,
+			</if>		
+			<if test="apptAmpm != null">
+				APPT_AMPM,
+			</if>		
+			<if test="startSection != null">
+				START_SECTION,
+			</if>		
+			<if test="startPoint != null">
+				START_POINT,
+			</if>		
+			<if test="createdt != null">
+				CREATEDT,
+			</if>		
+			<if test="signdt != null">
+				SIGNDT,
+			</if>		
+			<if test="deviceIdChecked != null">
+				DEVICE_ID_CHECKED,
+			</if>		
+			<if test="closedt != null">
+				CLOSEDT,
+			</if>		
+			<if test="status != null">
+				STATUS,
+			</if>		
+			<if test="remark != null">
+				REMARK,
+			</if>		
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="apptId != null">
+				#{apptId},
+			</if>	
+			<if test="examId != null">
+				#{examId},
+			</if>	
+			<if test="personId != null">
+				#{personId},
+			</if>	
+			<if test="personType != null">
+				#{personType},
+			</if>	
+			<if test="ordercode != null">
+				#{ordercode},
+			</if>	
+			<if test="deviceId != null">
+				#{deviceId},
+			</if>	
+			<if test="apptDt != null">
+				#{apptDt},
+			</if>	
+			<if test="apptAmpm != null">
+				#{apptAmpm},
+			</if>	
+			<if test="startSection != null">
+				#{startSection},
+			</if>	
+			<if test="startPoint != null">
+				#{startPoint},
+			</if>	
+			<if test="createdt != null">
+				#{createdt},
+			</if>	
+			<if test="signdt != null">
+				#{signdt},
+			</if>	
+			<if test="deviceIdChecked != null">
+				#{deviceIdChecked},
+			</if>	
+			<if test="closedt != null">
+				#{closedt},
+			</if>	
+			<if test="status != null">
+				#{status},
+			</if>	
+			<if test="remark != null">
+				#{remark},
+			</if>	
+		</trim>
+	</insert>
+	
+	<update id="updates">
+		UPDATE PC_ORDER_BOOK
+		<set>
+			<if test="value.isInitApptId">
+				<choose>
+					<when test="value.apptId != null">
+						APPT_ID = #{value.apptId},
+					</when>
+					<otherwise>
+						APPT_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitExamId">
+				<choose>
+					<when test="value.examId != null">
+						EXAM_ID = #{value.examId},
+					</when>
+					<otherwise>
+						EXAM_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitPersonId">
+				<choose>
+					<when test="value.personId != null">
+						PERSON_ID = #{value.personId},
+					</when>
+					<otherwise>
+						PERSON_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitPersonType">
+				<choose>
+					<when test="value.personType != null">
+						PERSON_TYPE = #{value.personType},
+					</when>
+					<otherwise>
+						PERSON_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitOrdercode">
+				<choose>
+					<when test="value.ordercode != null">
+						ORDERCODE = #{value.ordercode},
+					</when>
+					<otherwise>
+						ORDERCODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitDeviceId">
+				<choose>
+					<when test="value.deviceId != null">
+						DEVICE_ID = #{value.deviceId},
+					</when>
+					<otherwise>
+						DEVICE_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitApptDt">
+				<choose>
+					<when test="value.apptDt != null">
+						APPT_DT = #{value.apptDt},
+					</when>
+					<otherwise>
+						APPT_DT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitApptAmpm">
+				<choose>
+					<when test="value.apptAmpm != null">
+						APPT_AMPM = #{value.apptAmpm},
+					</when>
+					<otherwise>
+						APPT_AMPM = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitStartSection">
+				<choose>
+					<when test="value.startSection != null">
+						START_SECTION = #{value.startSection},
+					</when>
+					<otherwise>
+						START_SECTION = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitStartPoint">
+				<choose>
+					<when test="value.startPoint != null">
+						START_POINT = #{value.startPoint},
+					</when>
+					<otherwise>
+						START_POINT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitCreatedt">
+				<choose>
+					<when test="value.createdt != null">
+						CREATEDT = #{value.createdt},
+					</when>
+					<otherwise>
+						CREATEDT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitSigndt">
+				<choose>
+					<when test="value.signdt != null">
+						SIGNDT = #{value.signdt},
+					</when>
+					<otherwise>
+						SIGNDT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitDeviceIdChecked">
+				<choose>
+					<when test="value.deviceIdChecked != null">
+						DEVICE_ID_CHECKED = #{value.deviceIdChecked},
+					</when>
+					<otherwise>
+						DEVICE_ID_CHECKED = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitClosedt">
+				<choose>
+					<when test="value.closedt != null">
+						CLOSEDT = #{value.closedt},
+					</when>
+					<otherwise>
+						CLOSEDT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitStatus">
+				<choose>
+					<when test="value.status != null">
+						STATUS = #{value.status},
+					</when>
+					<otherwise>
+						STATUS = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitRemark">
+				<choose>
+					<when test="value.remark != null">
+						REMARK = #{value.remark},
+					</when>
+					<otherwise>
+						REMARK = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 1=1 
+		<if test="condition.apptId != null and condition.apptId != ''">
+			AND APPT_ID =	#{condition.apptId} 
+		</if>
+		<if test="condition.examId != null and condition.examId != ''">
+			AND EXAM_ID =	#{condition.examId} 
+		</if>
+		<if test="condition.personId != null and condition.personId != ''">
+			AND PERSON_ID =	#{condition.personId} 
+		</if>
+		<if test="condition.personType != null and condition.personType != ''">
+			AND PERSON_TYPE =	#{condition.personType} 
+		</if>
+		
+		<if test="condition.deviceId != null and condition.deviceId != ''">
+			AND DEVICE_ID =	#{condition.deviceId} 
+		</if>
+		<if test="condition.apptDt != null and condition.apptDt != ''">
+			AND APPT_DT =	#{condition.apptDt} 
+		</if>
+		<if test="condition.apptAmpm != null and condition.apptAmpm != ''">
+			AND APPT_AMPM =	#{condition.apptAmpm} 
+		</if>
+		<if test="condition.startSection != null and condition.startSection != ''">
+			AND START_SECTION =	#{condition.startSection} 
+		</if>
+		<if test="condition.startPoint != null and condition.startPoint != ''">
+			AND START_POINT =	#{condition.startPoint} 
+		</if>
+		<if test="condition.createdt != null and condition.createdt != ''">
+			AND CREATEDT =	#{condition.createdt} 
+		</if>
+		<if test="condition.signdt != null and condition.signdt != ''">
+			AND SIGNDT =	#{condition.signdt} 
+		</if>
+		<if test="condition.deviceIdChecked != null and condition.deviceIdChecked != ''">
+			AND DEVICE_ID_CHECKED =	#{condition.deviceIdChecked} 
+		</if>
+		<if test="condition.closedt != null and condition.closedt != ''">
+			AND CLOSEDT =	#{condition.closedt} 
+		</if>
+		<if test="condition.status != null and condition.status != ''">
+			AND STATUS =	#{condition.status} 
+		</if>
+		<if test="condition.remark != null and condition.remark != ''">
+			AND REMARK =	#{condition.remark} 
+		</if>
+	</update>
+	
+	<update id="update" parameterType="com.kool.pacs.bean.PcOrderBookBean">
+		UPDATE PC_ORDER_BOOK
+		<set>
+			<if test="isInitApptId">
+				<choose>
+					<when test="apptId != null">
+						APPT_ID = #{apptId},
+					</when>
+					<otherwise>
+						APPT_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitExamId">
+				<choose>
+					<when test="examId != null">
+						EXAM_ID = #{examId},
+					</when>
+					<otherwise>
+						EXAM_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitPersonId">
+				<choose>
+					<when test="personId != null">
+						PERSON_ID = #{personId},
+					</when>
+					<otherwise>
+						PERSON_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitPersonType">
+				<choose>
+					<when test="personType != null">
+						PERSON_TYPE = #{personType},
+					</when>
+					<otherwise>
+						PERSON_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitOrdercode">
+				<choose>
+					<when test="ordercode != null">
+						ORDERCODE = #{ordercode},
+					</when>
+					<otherwise>
+						ORDERCODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitDeviceId">
+				<choose>
+					<when test="deviceId != null">
+						DEVICE_ID = #{deviceId},
+					</when>
+					<otherwise>
+						DEVICE_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitApptDt">
+				<choose>
+					<when test="apptDt != null">
+						APPT_DT = #{apptDt},
+					</when>
+					<otherwise>
+						APPT_DT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitApptAmpm">
+				<choose>
+					<when test="apptAmpm != null">
+						APPT_AMPM = #{apptAmpm},
+					</when>
+					<otherwise>
+						APPT_AMPM = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitStartSection">
+				<choose>
+					<when test="startSection != null">
+						START_SECTION = #{startSection},
+					</when>
+					<otherwise>
+						START_SECTION = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitStartPoint">
+				<choose>
+					<when test="startPoint != null">
+						START_POINT = #{startPoint},
+					</when>
+					<otherwise>
+						START_POINT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitCreatedt">
+				<choose>
+					<when test="createdt != null">
+						CREATEDT = #{createdt},
+					</when>
+					<otherwise>
+						CREATEDT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitSigndt">
+				<choose>
+					<when test="signdt != null">
+						SIGNDT = #{signdt},
+					</when>
+					<otherwise>
+						SIGNDT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitDeviceIdChecked">
+				<choose>
+					<when test="deviceIdChecked != null">
+						DEVICE_ID_CHECKED = #{deviceIdChecked},
+					</when>
+					<otherwise>
+						DEVICE_ID_CHECKED = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitClosedt">
+				<choose>
+					<when test="closedt != null">
+						CLOSEDT = #{closedt},
+					</when>
+					<otherwise>
+						CLOSEDT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitStatus">
+				<choose>
+					<when test="status != null">
+						STATUS = #{status},
+					</when>
+					<otherwise>
+						STATUS = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitRemark">
+				<choose>
+					<when test="remark != null">
+						REMARK = #{remark},
+					</when>
+					<otherwise>
+						REMARK = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 
+		APPT_ID = #{apptId}
+	</update>	
+	
+	<select id="selectPage" resultMap="BaseResultMap">
+		SELECT 
+		<include refid="Base_Column_List" />
+		FROM
+		PC_ORDER_BOOK WHERE 1=1
+		<if test="pcOrderBook!=null">
+			<if test="pcOrderBook.apptId != null and pcOrderBook.apptId != ''">
+				AND APPT_ID = #{pcOrderBook.apptId}
+			</if>
+			<if test="pcOrderBook.examId != null and pcOrderBook.examId != ''">
+				AND EXAM_ID = #{pcOrderBook.examId}
+			</if>
+			<if test="pcOrderBook.personId != null and pcOrderBook.personId != ''">
+				AND PERSON_ID = #{pcOrderBook.personId}
+			</if>
+			<if test="pcOrderBook.personType != null and pcOrderBook.personType != ''">
+				AND PERSON_TYPE = #{pcOrderBook.personType}
+			</if>
+			
+			<if test="pcOrderBook.deviceId != null and pcOrderBook.deviceId != ''">
+				AND DEVICE_ID = #{pcOrderBook.deviceId}
+			</if>
+			<if test="pcOrderBook.apptDt != null and pcOrderBook.apptDt != ''">
+				AND APPT_DT = #{pcOrderBook.apptDt}
+			</if>
+			<if test="pcOrderBook.apptAmpm != null and pcOrderBook.apptAmpm != ''">
+				AND APPT_AMPM = #{pcOrderBook.apptAmpm}
+			</if>
+			<if test="pcOrderBook.startSection != null and pcOrderBook.startSection != ''">
+				AND START_SECTION = #{pcOrderBook.startSection}
+			</if>
+			<if test="pcOrderBook.startPoint != null and pcOrderBook.startPoint != ''">
+				AND START_POINT = #{pcOrderBook.startPoint}
+			</if>
+			<if test="pcOrderBook.createdt != null and pcOrderBook.createdt != ''">
+				AND CREATEDT = #{pcOrderBook.createdt}
+			</if>
+			<if test="pcOrderBook.signdt != null and pcOrderBook.signdt != ''">
+				AND SIGNDT = #{pcOrderBook.signdt}
+			</if>
+			<if test="pcOrderBook.deviceIdChecked != null and pcOrderBook.deviceIdChecked != ''">
+				AND DEVICE_ID_CHECKED = #{pcOrderBook.deviceIdChecked}
+			</if>
+			<if test="pcOrderBook.closedt != null and pcOrderBook.closedt != ''">
+				AND CLOSEDT = #{pcOrderBook.closedt}
+			</if>
+			<if test="pcOrderBook.status != null and pcOrderBook.status != ''">
+				AND STATUS = #{pcOrderBook.status}
+			</if>
+			<if test="pcOrderBook.remark != null and pcOrderBook.remark != ''">
+				AND REMARK = #{pcOrderBook.remark}
+			</if>
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+		LIMIT #{offset},#{pageSize}
+	</select>
+	
+	<select id="selectTotal" parameterType="com.kool.pacs.bean.PcOrderBookBean" resultType="Integer">
+		SELECT COUNT(*) TOTALRECORD FROM PC_ORDER_BOOK
+		WHERE 1=1
+		<if test="_parameter!=null">
+			<if test="apptId != null and apptId != ''">
+				AND APPT_ID = #{apptId}
+			</if>
+			<if test="examId != null and examId != ''">
+				AND EXAM_ID = #{examId}
+			</if>
+			<if test="personId != null and personId != ''">
+				AND PERSON_ID = #{personId}
+			</if>
+			<if test="personType != null and personType != ''">
+				AND PERSON_TYPE = #{personType}
+			</if>
+			
+			<if test="deviceId != null and deviceId != ''">
+				AND DEVICE_ID = #{deviceId}
+			</if>
+			<if test="apptDt != null and apptDt != ''">
+				AND APPT_DT = #{apptDt}
+			</if>
+			<if test="apptAmpm != null and apptAmpm != ''">
+				AND APPT_AMPM = #{apptAmpm}
+			</if>
+			<if test="startSection != null and startSection != ''">
+				AND START_SECTION = #{startSection}
+			</if>
+			<if test="startPoint != null and startPoint != ''">
+				AND START_POINT = #{startPoint}
+			</if>
+			<if test="createdt != null and createdt != ''">
+				AND CREATEDT = #{createdt}
+			</if>
+			<if test="signdt != null and signdt != ''">
+				AND SIGNDT = #{signdt}
+			</if>
+			<if test="deviceIdChecked != null and deviceIdChecked != ''">
+				AND DEVICE_ID_CHECKED = #{deviceIdChecked}
+			</if>
+			<if test="closedt != null and closedt != ''">
+				AND CLOSEDT = #{closedt}
+			</if>
+			<if test="status != null and status != ''">
+				AND STATUS = #{status}
+			</if>
+			<if test="remark != null and remark != ''">
+				AND REMARK = #{remark}
+			</if>
+		</if>
+	</select>
+	
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO PC_ORDER_BOOK(
+		<include refid="Base_Column_List" />
+		) VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			#{item.apptId},		
+			#{item.examId},		
+			#{item.personId},		
+			#{item.personType},		
+			#{item.ordercode},		
+			#{item.deviceId},		
+			#{item.apptDt},		
+			#{item.apptAmpm},		
+			#{item.startSection},		
+			#{item.startPoint},		
+			#{item.createdt},		
+			#{item.signdt},		
+			#{item.deviceIdChecked},		
+			#{item.closedt},		
+			#{item.status},		
+			#{item.remark},		
+		</trim>
+		</foreach>
+	</insert>
+
+	<select id="selectBySql" parameterType="java.lang.String"
+		resultMap="hashMap">
+		${_parameter}
+	</select>
+
+	<select id="selectTotalBySql" parameterType="java.lang.String"
+		resultType="Integer">
+		${_parameter}
+	</select>
+</mapper>  

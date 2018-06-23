@@ -8,6 +8,7 @@ package com.kool.core.util;
 import java.util.UUID;
 
 import com.kool.core.exception.AppException;
+import com.kool.core.exception.BusException;
 
 /**
  * @DESCRIBE 字符串工具
@@ -143,7 +144,62 @@ public class StringUtils {
 		return System.getProperty("user.dir");
 	}
 
-	public static void main(String[] args) {
-		System.out.println(getUUID());
+	public static void main(String[] args) throws AppException {
+		String num = add("1","15");
+		System.out.println(num);
+	}
+
+	/**
+	 * @DESCRIBE 
+	 * @DATE 2018年6月23日 下午10:03:20
+	 *
+	 * @param numberA
+	 * @param numberB
+	 * @throws AppException 
+	 */
+	public static String add(String numberA, String numberB) throws AppException {
+		if (null == numberA || null == numberB) {
+			throw new AppException("加数为空");
+		}
+		int lenA = numberA.length();
+		int lenB = numberB.length();
+		StringBuilder sbSum = new StringBuilder();
+		String sLong = null;
+		String sShort = null;
+		if (lenA>=lenB) {
+			sLong = numberA;
+			sShort = numberB;
+		}else {
+			sLong = numberB;
+			sShort = numberA;
+		}
+		int plus = 0;
+		for (int i = 0; i < sShort.length(); i++) {
+			int C = Integer.valueOf(sLong.substring(sLong.length()-1-i, sLong.length()-i));
+			C += Integer.valueOf(sShort.substring(sShort.length()-1-i, sShort.length()-i));
+			C += plus;
+			if (C>=10) {
+				C = C-10;
+				plus = 1;
+			}
+			sbSum.insert(0, C);
+		}
+		
+		int j = sShort.length();
+		while (j <sLong.length()) {
+			int C = Integer.valueOf(sLong.substring(sLong.length()-j-1,sLong.length()-j));
+			C+=plus;
+			if (C>=10) {
+				C = C-10;
+				plus = 1;
+			}
+			sbSum.insert(0, C);
+			j++;
+		}
+		if (plus ==1) {
+			sbSum.insert(0,1);
+		}
+		
+		return sbSum.toString();
 	}
 }

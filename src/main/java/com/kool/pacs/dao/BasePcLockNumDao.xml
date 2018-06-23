@@ -1,0 +1,716 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.pacs.dao.BasePcLockNumDao">
+	<resultMap id="BaseResultMap" type="com.kool.pacs.bean.PcLockNumBean">
+		<id column="LOCK_ID" property="lockId" />
+		<result column="DEVICE_ID" property="deviceId" />
+		<result column="LOCK_DT" property="lockDt" />
+		<result column="LOCK_AMPM" property="lockAmpm" />
+		<result column="LOCK_SECTION" property="lockSection" />
+		<result column="LOCK_POINT" property="lockPoint" />
+		<result column="LOCK_TYPE" property="lockType" />
+		<result column="UNLOCKDEPTID" property="unlockdeptid" />
+		<result column="LOCK_PERSONID" property="lockPersonid" />
+		<result column="ORDERCODE" property="ordercode" />
+		<result column="CREATEDT" property="createdt" />
+		<result column="LOCK_REASON" property="lockReason" />
+		<result column="STATUS" property="status" />
+		<result column="REMARK" property="remark" />
+	</resultMap>
+	<resultMap id="hashMap" type="java.util.HashMap">
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			LOCK_ID, 			
+			DEVICE_ID, 			
+			LOCK_DT, 			
+			LOCK_AMPM, 			
+			LOCK_SECTION, 			
+			LOCK_POINT, 			
+			LOCK_TYPE, 			
+			UNLOCKDEPTID, 			
+			LOCK_PERSONID, 			
+			ORDERCODE, 			
+			CREATEDT, 			
+			LOCK_REASON, 			
+			STATUS, 			
+			REMARK			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		LOCK_ID
+	</sql>
+
+	<select id="select" parameterType="com.kool.pacs.bean.PcLockNumBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM PC_LOCK_NUM WHERE 1=1 
+		<if test="lockId != null and lockId != ''">
+			AND LOCK_ID = #{lockId}
+		</if>
+		<if test="deviceId != null and deviceId != ''">
+			AND DEVICE_ID = #{deviceId}
+		</if>
+		<if test="lockDt != null and lockDt != ''">
+			AND LOCK_DT = #{lockDt}
+		</if>
+		<if test="lockAmpm != null and lockAmpm != ''">
+			AND LOCK_AMPM = #{lockAmpm}
+		</if>
+		<if test="lockSection != null and lockSection != ''">
+			AND LOCK_SECTION = #{lockSection}
+		</if>
+		<if test="lockPoint != null and lockPoint != ''">
+			AND LOCK_POINT = #{lockPoint}
+		</if>
+		<if test="lockType != null and lockType != ''">
+			AND LOCK_TYPE = #{lockType}
+		</if>
+		<if test="unlockdeptid != null and unlockdeptid != ''">
+			AND UNLOCKDEPTID = #{unlockdeptid}
+		</if>
+		<if test="lockPersonid != null and lockPersonid != ''">
+			AND LOCK_PERSONID = #{lockPersonid}
+		</if>
+		
+		<if test="createdt != null and createdt != ''">
+			AND CREATEDT = #{createdt}
+		</if>
+		<if test="lockReason != null and lockReason != ''">
+			AND LOCK_REASON = #{lockReason}
+		</if>
+		<if test="status != null and status != ''">
+			AND STATUS = #{status}
+		</if>
+		<if test="remark != null and remark != ''">
+			AND REMARK = #{remark}
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<select id="selectByPK" parameterType="com.kool.pacs.bean.PcLockNumBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM PC_LOCK_NUM
+		WHERE 
+		LOCK_ID = #{lockId}
+		ORDER BY
+		<include refid="Primary_Key_List" />
+	</select>
+	
+	<delete id="delete" parameterType="com.kool.pacs.bean.PcLockNumBean">
+		DELETE FROM PC_LOCK_NUM
+		WHERE
+		LOCK_ID = #{lockId}
+	</delete>
+	
+	<delete id="deletes" parameterType="com.kool.pacs.bean.PcLockNumBean">
+		DELETE FROM PC_LOCK_NUM
+		WHERE 1=1 
+		<if test="lockId != null and lockId != ''">
+			AND LOCK_ID = #{lockId}
+		</if>
+		<if test="deviceId != null and deviceId != ''">
+			AND DEVICE_ID = #{deviceId}
+		</if>
+		<if test="lockDt != null and lockDt != ''">
+			AND LOCK_DT = #{lockDt}
+		</if>
+		<if test="lockAmpm != null and lockAmpm != ''">
+			AND LOCK_AMPM = #{lockAmpm}
+		</if>
+		<if test="lockSection != null and lockSection != ''">
+			AND LOCK_SECTION = #{lockSection}
+		</if>
+		<if test="lockPoint != null and lockPoint != ''">
+			AND LOCK_POINT = #{lockPoint}
+		</if>
+		<if test="lockType != null and lockType != ''">
+			AND LOCK_TYPE = #{lockType}
+		</if>
+		<if test="unlockdeptid != null and unlockdeptid != ''">
+			AND UNLOCKDEPTID = #{unlockdeptid}
+		</if>
+		<if test="lockPersonid != null and lockPersonid != ''">
+			AND LOCK_PERSONID = #{lockPersonid}
+		</if>
+		
+		<if test="createdt != null and createdt != ''">
+			AND CREATEDT = #{createdt}
+		</if>
+		<if test="lockReason != null and lockReason != ''">
+			AND LOCK_REASON = #{lockReason}
+		</if>
+		<if test="status != null and status != ''">
+			AND STATUS = #{status}
+		</if>
+		<if test="remark != null and remark != ''">
+			AND REMARK = #{remark}
+		</if>
+	</delete>
+	
+	<insert id="insert" parameterType="com.kool.pacs.bean.PcLockNumBean">
+		INSERT INTO PC_LOCK_NUM
+		<trim prefix="(" suffix=")" suffixOverrides=",">		
+			<if test="lockId != null">
+				LOCK_ID,
+			</if>		
+			<if test="deviceId != null">
+				DEVICE_ID,
+			</if>		
+			<if test="lockDt != null">
+				LOCK_DT,
+			</if>		
+			<if test="lockAmpm != null">
+				LOCK_AMPM,
+			</if>		
+			<if test="lockSection != null">
+				LOCK_SECTION,
+			</if>		
+			<if test="lockPoint != null">
+				LOCK_POINT,
+			</if>		
+			<if test="lockType != null">
+				LOCK_TYPE,
+			</if>		
+			<if test="unlockdeptid != null">
+				UNLOCKDEPTID,
+			</if>		
+			<if test="lockPersonid != null">
+				LOCK_PERSONID,
+			</if>		
+			<if test="ordercode != null">
+				ORDERCODE,
+			</if>		
+			<if test="createdt != null">
+				CREATEDT,
+			</if>		
+			<if test="lockReason != null">
+				LOCK_REASON,
+			</if>		
+			<if test="status != null">
+				STATUS,
+			</if>		
+			<if test="remark != null">
+				REMARK,
+			</if>		
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="lockId != null">
+				#{lockId},
+			</if>	
+			<if test="deviceId != null">
+				#{deviceId},
+			</if>	
+			<if test="lockDt != null">
+				#{lockDt},
+			</if>	
+			<if test="lockAmpm != null">
+				#{lockAmpm},
+			</if>	
+			<if test="lockSection != null">
+				#{lockSection},
+			</if>	
+			<if test="lockPoint != null">
+				#{lockPoint},
+			</if>	
+			<if test="lockType != null">
+				#{lockType},
+			</if>	
+			<if test="unlockdeptid != null">
+				#{unlockdeptid},
+			</if>	
+			<if test="lockPersonid != null">
+				#{lockPersonid},
+			</if>	
+			<if test="ordercode != null">
+				#{ordercode},
+			</if>	
+			<if test="createdt != null">
+				#{createdt},
+			</if>	
+			<if test="lockReason != null">
+				#{lockReason},
+			</if>	
+			<if test="status != null">
+				#{status},
+			</if>	
+			<if test="remark != null">
+				#{remark},
+			</if>	
+		</trim>
+	</insert>
+	
+	<update id="updates">
+		UPDATE PC_LOCK_NUM
+		<set>
+			<if test="value.isInitLockId">
+				<choose>
+					<when test="value.lockId != null">
+						LOCK_ID = #{value.lockId},
+					</when>
+					<otherwise>
+						LOCK_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitDeviceId">
+				<choose>
+					<when test="value.deviceId != null">
+						DEVICE_ID = #{value.deviceId},
+					</when>
+					<otherwise>
+						DEVICE_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitLockDt">
+				<choose>
+					<when test="value.lockDt != null">
+						LOCK_DT = #{value.lockDt},
+					</when>
+					<otherwise>
+						LOCK_DT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitLockAmpm">
+				<choose>
+					<when test="value.lockAmpm != null">
+						LOCK_AMPM = #{value.lockAmpm},
+					</when>
+					<otherwise>
+						LOCK_AMPM = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitLockSection">
+				<choose>
+					<when test="value.lockSection != null">
+						LOCK_SECTION = #{value.lockSection},
+					</when>
+					<otherwise>
+						LOCK_SECTION = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitLockPoint">
+				<choose>
+					<when test="value.lockPoint != null">
+						LOCK_POINT = #{value.lockPoint},
+					</when>
+					<otherwise>
+						LOCK_POINT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitLockType">
+				<choose>
+					<when test="value.lockType != null">
+						LOCK_TYPE = #{value.lockType},
+					</when>
+					<otherwise>
+						LOCK_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitUnlockdeptid">
+				<choose>
+					<when test="value.unlockdeptid != null">
+						UNLOCKDEPTID = #{value.unlockdeptid},
+					</when>
+					<otherwise>
+						UNLOCKDEPTID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitLockPersonid">
+				<choose>
+					<when test="value.lockPersonid != null">
+						LOCK_PERSONID = #{value.lockPersonid},
+					</when>
+					<otherwise>
+						LOCK_PERSONID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitOrdercode">
+				<choose>
+					<when test="value.ordercode != null">
+						ORDERCODE = #{value.ordercode},
+					</when>
+					<otherwise>
+						ORDERCODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitCreatedt">
+				<choose>
+					<when test="value.createdt != null">
+						CREATEDT = #{value.createdt},
+					</when>
+					<otherwise>
+						CREATEDT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitLockReason">
+				<choose>
+					<when test="value.lockReason != null">
+						LOCK_REASON = #{value.lockReason},
+					</when>
+					<otherwise>
+						LOCK_REASON = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitStatus">
+				<choose>
+					<when test="value.status != null">
+						STATUS = #{value.status},
+					</when>
+					<otherwise>
+						STATUS = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="value.isInitRemark">
+				<choose>
+					<when test="value.remark != null">
+						REMARK = #{value.remark},
+					</when>
+					<otherwise>
+						REMARK = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 1=1 
+		<if test="condition.lockId != null and condition.lockId != ''">
+			AND LOCK_ID =	#{condition.lockId} 
+		</if>
+		<if test="condition.deviceId != null and condition.deviceId != ''">
+			AND DEVICE_ID =	#{condition.deviceId} 
+		</if>
+		<if test="condition.lockDt != null and condition.lockDt != ''">
+			AND LOCK_DT =	#{condition.lockDt} 
+		</if>
+		<if test="condition.lockAmpm != null and condition.lockAmpm != ''">
+			AND LOCK_AMPM =	#{condition.lockAmpm} 
+		</if>
+		<if test="condition.lockSection != null and condition.lockSection != ''">
+			AND LOCK_SECTION =	#{condition.lockSection} 
+		</if>
+		<if test="condition.lockPoint != null and condition.lockPoint != ''">
+			AND LOCK_POINT =	#{condition.lockPoint} 
+		</if>
+		<if test="condition.lockType != null and condition.lockType != ''">
+			AND LOCK_TYPE =	#{condition.lockType} 
+		</if>
+		<if test="condition.unlockdeptid != null and condition.unlockdeptid != ''">
+			AND UNLOCKDEPTID =	#{condition.unlockdeptid} 
+		</if>
+		<if test="condition.lockPersonid != null and condition.lockPersonid != ''">
+			AND LOCK_PERSONID =	#{condition.lockPersonid} 
+		</if>
+		
+		<if test="condition.createdt != null and condition.createdt != ''">
+			AND CREATEDT =	#{condition.createdt} 
+		</if>
+		<if test="condition.lockReason != null and condition.lockReason != ''">
+			AND LOCK_REASON =	#{condition.lockReason} 
+		</if>
+		<if test="condition.status != null and condition.status != ''">
+			AND STATUS =	#{condition.status} 
+		</if>
+		<if test="condition.remark != null and condition.remark != ''">
+			AND REMARK =	#{condition.remark} 
+		</if>
+	</update>
+	
+	<update id="update" parameterType="com.kool.pacs.bean.PcLockNumBean">
+		UPDATE PC_LOCK_NUM
+		<set>
+			<if test="isInitLockId">
+				<choose>
+					<when test="lockId != null">
+						LOCK_ID = #{lockId},
+					</when>
+					<otherwise>
+						LOCK_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitDeviceId">
+				<choose>
+					<when test="deviceId != null">
+						DEVICE_ID = #{deviceId},
+					</when>
+					<otherwise>
+						DEVICE_ID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitLockDt">
+				<choose>
+					<when test="lockDt != null">
+						LOCK_DT = #{lockDt},
+					</when>
+					<otherwise>
+						LOCK_DT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitLockAmpm">
+				<choose>
+					<when test="lockAmpm != null">
+						LOCK_AMPM = #{lockAmpm},
+					</when>
+					<otherwise>
+						LOCK_AMPM = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitLockSection">
+				<choose>
+					<when test="lockSection != null">
+						LOCK_SECTION = #{lockSection},
+					</when>
+					<otherwise>
+						LOCK_SECTION = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitLockPoint">
+				<choose>
+					<when test="lockPoint != null">
+						LOCK_POINT = #{lockPoint},
+					</when>
+					<otherwise>
+						LOCK_POINT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitLockType">
+				<choose>
+					<when test="lockType != null">
+						LOCK_TYPE = #{lockType},
+					</when>
+					<otherwise>
+						LOCK_TYPE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitUnlockdeptid">
+				<choose>
+					<when test="unlockdeptid != null">
+						UNLOCKDEPTID = #{unlockdeptid},
+					</when>
+					<otherwise>
+						UNLOCKDEPTID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitLockPersonid">
+				<choose>
+					<when test="lockPersonid != null">
+						LOCK_PERSONID = #{lockPersonid},
+					</when>
+					<otherwise>
+						LOCK_PERSONID = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitOrdercode">
+				<choose>
+					<when test="ordercode != null">
+						ORDERCODE = #{ordercode},
+					</when>
+					<otherwise>
+						ORDERCODE = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitCreatedt">
+				<choose>
+					<when test="createdt != null">
+						CREATEDT = #{createdt},
+					</when>
+					<otherwise>
+						CREATEDT = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitLockReason">
+				<choose>
+					<when test="lockReason != null">
+						LOCK_REASON = #{lockReason},
+					</when>
+					<otherwise>
+						LOCK_REASON = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitStatus">
+				<choose>
+					<when test="status != null">
+						STATUS = #{status},
+					</when>
+					<otherwise>
+						STATUS = NULL,
+					</otherwise>
+				</choose>
+			</if>
+			<if test="isInitRemark">
+				<choose>
+					<when test="remark != null">
+						REMARK = #{remark},
+					</when>
+					<otherwise>
+						REMARK = NULL,
+					</otherwise>
+				</choose>
+			</if>
+		</set>
+		WHERE 
+		LOCK_ID = #{lockId}
+	</update>	
+	
+	<select id="selectPage" resultMap="BaseResultMap">
+		SELECT 
+		<include refid="Base_Column_List" />
+		FROM
+		PC_LOCK_NUM WHERE 1=1
+		<if test="pcLockNum!=null">
+			<if test="pcLockNum.lockId != null and pcLockNum.lockId != ''">
+				AND LOCK_ID = #{pcLockNum.lockId}
+			</if>
+			<if test="pcLockNum.deviceId != null and pcLockNum.deviceId != ''">
+				AND DEVICE_ID = #{pcLockNum.deviceId}
+			</if>
+			<if test="pcLockNum.lockDt != null and pcLockNum.lockDt != ''">
+				AND LOCK_DT = #{pcLockNum.lockDt}
+			</if>
+			<if test="pcLockNum.lockAmpm != null and pcLockNum.lockAmpm != ''">
+				AND LOCK_AMPM = #{pcLockNum.lockAmpm}
+			</if>
+			<if test="pcLockNum.lockSection != null and pcLockNum.lockSection != ''">
+				AND LOCK_SECTION = #{pcLockNum.lockSection}
+			</if>
+			<if test="pcLockNum.lockPoint != null and pcLockNum.lockPoint != ''">
+				AND LOCK_POINT = #{pcLockNum.lockPoint}
+			</if>
+			<if test="pcLockNum.lockType != null and pcLockNum.lockType != ''">
+				AND LOCK_TYPE = #{pcLockNum.lockType}
+			</if>
+			<if test="pcLockNum.unlockdeptid != null and pcLockNum.unlockdeptid != ''">
+				AND UNLOCKDEPTID = #{pcLockNum.unlockdeptid}
+			</if>
+			<if test="pcLockNum.lockPersonid != null and pcLockNum.lockPersonid != ''">
+				AND LOCK_PERSONID = #{pcLockNum.lockPersonid}
+			</if>
+			
+			<if test="pcLockNum.createdt != null and pcLockNum.createdt != ''">
+				AND CREATEDT = #{pcLockNum.createdt}
+			</if>
+			<if test="pcLockNum.lockReason != null and pcLockNum.lockReason != ''">
+				AND LOCK_REASON = #{pcLockNum.lockReason}
+			</if>
+			<if test="pcLockNum.status != null and pcLockNum.status != ''">
+				AND STATUS = #{pcLockNum.status}
+			</if>
+			<if test="pcLockNum.remark != null and pcLockNum.remark != ''">
+				AND REMARK = #{pcLockNum.remark}
+			</if>
+		</if>
+		ORDER BY
+		<include refid="Primary_Key_List" />
+		LIMIT #{offset},#{pageSize}
+	</select>
+	
+	<select id="selectTotal" parameterType="com.kool.pacs.bean.PcLockNumBean" resultType="Integer">
+		SELECT COUNT(*) TOTALRECORD FROM PC_LOCK_NUM
+		WHERE 1=1
+		<if test="_parameter!=null">
+			<if test="lockId != null and lockId != ''">
+				AND LOCK_ID = #{lockId}
+			</if>
+			<if test="deviceId != null and deviceId != ''">
+				AND DEVICE_ID = #{deviceId}
+			</if>
+			<if test="lockDt != null and lockDt != ''">
+				AND LOCK_DT = #{lockDt}
+			</if>
+			<if test="lockAmpm != null and lockAmpm != ''">
+				AND LOCK_AMPM = #{lockAmpm}
+			</if>
+			<if test="lockSection != null and lockSection != ''">
+				AND LOCK_SECTION = #{lockSection}
+			</if>
+			<if test="lockPoint != null and lockPoint != ''">
+				AND LOCK_POINT = #{lockPoint}
+			</if>
+			<if test="lockType != null and lockType != ''">
+				AND LOCK_TYPE = #{lockType}
+			</if>
+			<if test="unlockdeptid != null and unlockdeptid != ''">
+				AND UNLOCKDEPTID = #{unlockdeptid}
+			</if>
+			<if test="lockPersonid != null and lockPersonid != ''">
+				AND LOCK_PERSONID = #{lockPersonid}
+			</if>
+			
+			<if test="createdt != null and createdt != ''">
+				AND CREATEDT = #{createdt}
+			</if>
+			<if test="lockReason != null and lockReason != ''">
+				AND LOCK_REASON = #{lockReason}
+			</if>
+			<if test="status != null and status != ''">
+				AND STATUS = #{status}
+			</if>
+			<if test="remark != null and remark != ''">
+				AND REMARK = #{remark}
+			</if>
+		</if>
+	</select>
+	
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO PC_LOCK_NUM(
+		<include refid="Base_Column_List" />
+		) VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			#{item.lockId},		
+			#{item.deviceId},		
+			#{item.lockDt},		
+			#{item.lockAmpm},		
+			#{item.lockSection},		
+			#{item.lockPoint},		
+			#{item.lockType},		
+			#{item.unlockdeptid},		
+			#{item.lockPersonid},		
+			#{item.ordercode},		
+			#{item.createdt},		
+			#{item.lockReason},		
+			#{item.status},		
+			#{item.remark},		
+		</trim>
+		</foreach>
+	</insert>
+
+	<select id="selectBySql" parameterType="java.lang.String"
+		resultMap="hashMap">
+		${_parameter}
+	</select>
+
+	<select id="selectTotalBySql" parameterType="java.lang.String"
+		resultType="Integer">
+		${_parameter}
+	</select>
+</mapper>  

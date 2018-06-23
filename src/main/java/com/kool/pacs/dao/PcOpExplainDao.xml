@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.pacs.dao.PcOpExplainDao">
+	<resultMap id="BaseResultMap" type="com.kool.pacs.bean.PcOpExplainBean">
+		<id column="EXPLAIN_ID" property="explainId" />
+		<result column="EXPLAIN_TITLE" property="explainTitle" />
+		<result column="EXPLAIN_CONTENT" property="explainContent" />
+		<result column="EXPLAIN_CODE" property="explainCode" />
+		<result column="EXPLAIN_TYPE" property="explainType" />
+		<result column="PARENT_UUID" property="parentUuid" />
+		<result column="PERSON_ID" property="personId" />
+		<result column="ORDERCODE" property="ordercode" />
+		<result column="CREATEDT" property="createdt" />
+		<result column="STATUS" property="status" />
+		<result column="REMARK" property="remark" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			EXPLAIN_ID, 			
+			EXPLAIN_TITLE, 			
+			EXPLAIN_CONTENT, 			
+			EXPLAIN_CODE, 			
+			EXPLAIN_TYPE, 			
+			PARENT_UUID, 			
+			PERSON_ID, 			
+			ORDERCODE, 			
+			CREATEDT, 			
+			STATUS, 			
+			REMARK			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		EXPLAIN_ID
+	</sql>
+</mapper>  

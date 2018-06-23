@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kool.pacs.dao.PcExamBookDao">
+	<resultMap id="BaseResultMap" type="com.kool.pacs.bean.PcExamBookBean">
+		<id column="EXAM_ID" property="examId" />
+		<result column="YJXH" property="yjxh" />
+		<result column="EXAM_SERIAL" property="examSerial" />
+		<result column="DOCTOR_ID" property="doctorId" />
+		<result column="DEPT_ID" property="deptId" />
+		<result column="CREATEDT" property="createdt" />
+		<result column="EXAM_TYPE" property="examType" />
+		<result column="ISEMERGENCY" property="isemergency" />
+		<result column="ISCURE" property="iscure" />
+		<result column="OWNCHARGE" property="owncharge" />
+		<result column="DISE_ID" property="diseId" />
+		<result column="PATIENT_ID" property="patientId" />
+		<result column="PATIENT_CODE" property="patientCode" />
+		<result column="PATIENT_NAME" property="patientName" />
+		<result column="OUT_ID" property="outId" />
+		<result column="EXAM_PURPOSE" property="examPurpose" />
+		<result column="EXAM_ZD" property="examZd" />
+		<result column="EXAM_ZS" property="examZs" />
+		<result column="EXAM_BS" property="examBs" />
+		<result column="EXAM_CT" property="examCt" />
+		<result column="BED_NO" property="bedNo" />
+		<result column="EXAMTYPE_ID" property="examtypeId" />
+		<result column="EXAMITEM_ID" property="examitemId" />
+		<result column="CHARGE_STATUS" property="chargeStatus" />
+		<result column="CHARGE_DT" property="chargeDt" />
+		<result column="FORM_STATUS" property="formStatus" />
+		<result column="SIGN_STATUS" property="signStatus" />
+		<result column="ISPRINT" property="isprint" />
+		<result column="APPT_ID" property="apptId" />
+		<result column="ORDERCODE" property="ordercode" />
+		<result column="SYSUPDATEDT" property="sysupdatedt" />
+		<result column="REMARK" property="remark" />
+		<result column="ILLNESS_LEVEL" property="illnessLevel" />
+		<result column="CONVOY_TYPE" property="convoyType" />
+		<result column="IS_BACTERIA" property="isBacteria" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			EXAM_ID, 			
+			YJXH, 			
+			EXAM_SERIAL, 			
+			DOCTOR_ID, 			
+			DEPT_ID, 			
+			CREATEDT, 			
+			EXAM_TYPE, 			
+			ISEMERGENCY, 			
+			ISCURE, 			
+			OWNCHARGE, 			
+			DISE_ID, 			
+			PATIENT_ID, 			
+			PATIENT_CODE, 			
+			PATIENT_NAME, 			
+			OUT_ID, 			
+			EXAM_PURPOSE, 			
+			EXAM_ZD, 			
+			EXAM_ZS, 			
+			EXAM_BS, 			
+			EXAM_CT, 			
+			BED_NO, 			
+			EXAMTYPE_ID, 			
+			EXAMITEM_ID, 			
+			CHARGE_STATUS, 			
+			CHARGE_DT, 			
+			FORM_STATUS, 			
+			SIGN_STATUS, 			
+			ISPRINT, 			
+			APPT_ID, 			
+			ORDERCODE, 			
+			SYSUPDATEDT, 			
+			REMARK, 			
+			ILLNESS_LEVEL, 			
+			CONVOY_TYPE, 			
+			IS_BACTERIA			
+	</sql>
+	
+	<sql id="Primary_Key_List">
+		EXAM_ID
+	</sql>
+</mapper>  

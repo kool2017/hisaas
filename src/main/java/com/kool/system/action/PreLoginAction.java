@@ -43,7 +43,6 @@ public class PreLoginAction implements IBaseAction {
 	 * @throws AppException
 	 */
 	@Override
-	@Transactional(propagation = Propagation.REQUIRED)
 	@ResponseBody
 	@RequestMapping(value = "/user/preLogin.json", method = RequestMethod.POST)
 	public JSONObject doAction(@RequestBody String sInput) throws BusException {

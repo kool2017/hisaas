@@ -47,6 +47,9 @@ public class UserService {
 	private static Logger logger = Logger.getLogger("stdout");
 
 	@Autowired
+	private CounterService cntService;
+	
+	@Autowired
 	private SyUserInfoDao userDao;
 
 	@Autowired
@@ -72,16 +75,20 @@ public class UserService {
 		String encryptPwd = sha(pwd + "|" + salt, N);
 
 		userInfo = new SyUserInfoBean();
-		userInfo.setSuiId(StringUtils.getUUID());
+		userInfo.setSuiUserCid(cntService.getNextNumber(SystemConstants.CNT_USER_CID));
 		userInfo.setSuiLoginName(regInf.getSuiLoginName());
+		userInfo.setSuiType(SystemConstants.SUI_TYPE_USER);
 		userInfo.setSuiPwd(encryptPwd);
 		userInfo.setSuiSalt(salt);
 		userInfo.setSuiNewSalt(salt);
 		userInfo.setSuiHashTimes(N);
-		userInfo.setSuiStatus(SystemConstants.SUI_STATUS_ACTIVE);// 正常
+		userInfo.setSuiState(SystemConstants.SUI_STATUS_ACTIVE);// 正常
 		userInfo.setSuiErrorTimes(0);
 		userInfo.setSuiRegisterTime(new Timestamp(System.currentTimeMillis()));
-
+		userInfo.setSuiHasKey(regInf.getSuiHasKey());
+		userInfo.setSuiKeyUid(regInf.getSuiKeyUid());
+		userInfo.setSuiStaffCid(regInf.getSuiStaffCid());
+		
 		userDao.insert(userInfo);
 	}
 
@@ -301,7 +308,7 @@ public class UserService {
 	 * @param userInfo
 	 */
 	public void freezeUser(SyUserInfoBean userInfo) {
-		userInfo.setSuiStatus(SystemConstants.SUI_STATUS_PENDING);
+		userInfo.setSuiState(SystemConstants.SUI_STATUS_PENDING);
 		userDao.update(userInfo);
 	}
 
@@ -313,7 +320,7 @@ public class UserService {
 	 * @param userInfo
 	 */
 	public void unfreezeUser(SyUserInfoBean userInfo) {
-		userInfo.setSuiStatus(SystemConstants.SUI_STATUS_ACTIVE);
+		userInfo.setSuiState(SystemConstants.SUI_STATUS_ACTIVE);
 		userDao.update(userInfo);
 	}
 
@@ -325,7 +332,7 @@ public class UserService {
 	 * @param userInfo
 	 */
 	public void closeUser(SyUserInfoBean userInfo) {
-		userInfo.setSuiStatus(SystemConstants.SUI_STATUS_CLOSE);
+		userInfo.setSuiState(SystemConstants.SUI_STATUS_CLOSE);
 		userDao.update(userInfo);
 	}
 

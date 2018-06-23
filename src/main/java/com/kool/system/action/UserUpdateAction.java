@@ -32,7 +32,6 @@ public class UserUpdateAction  implements IBaseAction {
 	@Autowired
 	private UserService service;
 
-	@Transactional(propagation = Propagation.REQUIRED)
 	@ResponseBody
 	@RequestMapping(value = "/usermng/userUpdate.json", method = RequestMethod.POST)
 	public JSONObject doAction(@RequestBody String sInput) throws BusException {

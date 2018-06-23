@@ -19,6 +19,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.kool.core.base.IBaseAction;
 import com.kool.core.exception.AppException;
 import com.kool.core.exception.BusException;
+import com.kool.system.SystemConstants;
 import com.kool.system.bean.io.SYREGINFXBean;
 import com.kool.system.service.UserService;
 
@@ -43,7 +44,6 @@ public class RegisterAction implements IBaseAction {
 	 * @throws AppException 
 	 */
 	@Override
-	@Transactional(propagation = Propagation.REQUIRED)
 	@ResponseBody
 	@RequestMapping(value = "/user/register.json", method = RequestMethod.POST)
 	public JSONObject doAction(@RequestBody String sInput) throws BusException, AppException {
@@ -51,6 +51,7 @@ public class RegisterAction implements IBaseAction {
 		JSONArray sectionIn = pkgIn.getJSONArray("SYREGINFX");
 		JSONObject propIn = sectionIn.getJSONObject(0);
 		SYREGINFXBean regInf = JSONObject.toJavaObject(propIn, SYREGINFXBean.class);
+		regInf.setSuiHasKey(SystemConstants.SUI_HAS_KEY_NO);
 		service.register(regInf);
 
 		return new JSONObject();

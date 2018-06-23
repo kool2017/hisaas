@@ -43,7 +43,6 @@ public class UserAddAction implements IBaseAction {
 	 * @throws AppException
 	 */
 	@Override
-	@Transactional(propagation = Propagation.REQUIRED)
 	@ResponseBody
 	@RequestMapping(value = "/usermng/userAdd.json", method = RequestMethod.POST)
 	public JSONObject doAction(@RequestBody String sInput) throws BusException, AppException {

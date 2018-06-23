@@ -44,4 +44,9 @@ public class BusException extends Exception{
 		}
 		return msg;
 	}
+	
+	public String getErrorCode() {
+		return this.errCod;
+	}
+	
 }
